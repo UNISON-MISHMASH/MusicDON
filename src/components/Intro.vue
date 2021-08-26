@@ -27,7 +27,12 @@ export default {
   data: function() {
     return {
       answerText: "",
-      audioEle: ["./Shape of You.mp3", "./はしりがき.mp3", "./Slow Easy.mp3"],
+      audioEle: [
+        { title: "Shape of You", sound: "./Shape of You.mp3" },
+        { title: "はしりがき", sound: "./はしりがき.mp3" },
+        { title: "Slow & Easy", sound: "./SlowEasy.mp3" },
+      ],
+      num: 0,
 
       // title:"",
     };
@@ -35,19 +40,21 @@ export default {
   methods: {
     getContents: function() {
       let audio = new Audio();
-      let num = Math.floor(Math.random() * this.audioEle.length);
-
-      if (num == this.audioEle.length) {
-        num = this.audioEle.length - 1;
-      }
-      audio.src = this.audioEle[num];
+      this.num = Math.floor(Math.random() * this.audioEle.length);
+      // if (num == this.audioEle.length) {
+      //   num = this.audioEle.length - 1;
+      // }
+      audio.src = this.audioEle[this.num].sound;
       audio.play();
     },
 
-    // //checkAnswer: function() {
-    //   // if(this.answerText==this.title){
-    //   // }
-    // },
+    checkAnswer: function() {
+      if (this.answerText == this.audioEle[this.num].title) {
+        alert("正解");
+      } else {
+        alert("不正解");
+      }
+    },
   },
 };
 </script>
