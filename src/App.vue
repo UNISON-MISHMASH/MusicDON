@@ -1,18 +1,33 @@
 <template>
   <div id="app">
-    <Intro></Intro>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/lyricsQuiz">歌詞クイズ</router-link> |
+      <router-link to="/introQuiz">イントロクイズ</router-link>
+    </div>
+    <router-view />
   </div>
 </template>
 
-<script>
-import Intro from "./components/Intro";
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  name: "App",
-  components: {
-    Intro,
-  },
-};
-</script>
+#nav {
+  padding: 30px;
+}
 
-<style></style>
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
