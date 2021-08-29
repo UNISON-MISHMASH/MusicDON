@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/lyricsQuiz">歌詞クイズ</router-link> |
-      <router-link to="/introQuiz">イントロクイズ</router-link>
+
+      <router-link to="/introQuiz">イントロクイズ</router-link> |
+      <router-link to="/introQuizTime">イントロクイズTimeAtack</router-link>
     </div>
     <router-view />
   </div>
