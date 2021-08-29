@@ -8,10 +8,11 @@
     </div>
 
     <router-view />
+    <div class="Login">
+      <button @click="login">Login</button>
+      <button v-on:click="logout">Logout</button>
+    </div>
     <div>
-      <div @click="login">ログイン</div>
-      <div v-on:click="logout">ログアウト</div>
-
       <div v-if="isLogin">こんにちは！</div>
       <div v-else>ログアウトしています</div>
     </div>
@@ -19,6 +20,11 @@
 </template>
 
 <style>
+* {
+  background-color: rgb(21, 254, 188);
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,6 +44,29 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.Login {
+  display: flex;
+  justify-content: center;
+}
+button {
+  font-size: 20px;
+  margin: 5%;
+
+  padding: 30px 50px;
+  font-family: "Oswald", sans-serif;
+  border-radius: 100vh;
+  border: 5px solid #000000;
+}
+@media screen and (max-width: 959px) {
+  .header-foto img {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header-foto img {
+    width: 90%;
+  }
 }
 </style>
 
