@@ -42,11 +42,12 @@
     <div class="screen">
       <p id="title2">NEWS</p>
       <ul class="slider">
-        <li><img src="../assets/sample1.png" alt="image(1)" /></li>
+        <!--<li><img src="../assets/sample1.png" alt="image(1)" /></li>
         <li><img src="../assets/sample2.png" alt="image(2)" /></li>
         <li><img src="../assets/sample3.png" alt="image(3)" /></li>
-        <li><img src="../assets/sample4.png" alt="image(4)" /></li>
+        <li><img src="../assets/sample4.png" alt="image(4)" /></li>-->
       </ul>
+      <img v-bind:src="imgName" alt="" />
     </div>
     <div class="Runking">
       <p class="runking-title" id="title1">RUNKING</p>
@@ -130,7 +131,7 @@
 .play-mode button {
   font-size: 50px;
   margin-top: 20px;
-
+  color: black;
   padding: 30px;
   font-family: "Oswald", sans-serif;
   border-radius: 100vh;
@@ -182,7 +183,7 @@
   font-family: "Oswald", sans-serif;
   text-align: center;
 }
-.slider img {
+.screen img {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
@@ -230,7 +231,7 @@
     font-size: 30px;
   }
 
-  .slider img {
+  .screen img {
     width: 90%;
     margin: auto;
     margin-bottom: 30px;
@@ -273,10 +274,17 @@
   }
 }
 </style>
+
 <script>
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  data() {
+    return {
+      imgName: require("@/assets/sample1.png"),
+    }
+  },
+
+  method: {},
 }
 </script>
