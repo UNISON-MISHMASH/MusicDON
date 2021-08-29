@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container">
+      <div>{{ user.displayName }}</div>
       <div id="app" class="start">
         <h2>さあはじめよう！！！</h2>
         <div>
