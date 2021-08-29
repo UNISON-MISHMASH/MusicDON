@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>歌詞クイズ</h1>
+    <div>{{ user.displayName }}</div>
     <div v-for="(question, index) in questions" v-bind:key="index">
       {{ question }}
     </div>
@@ -35,6 +36,11 @@ export default {
   //     alert("残念、不正解です")
   //   }
   // }
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
+  },
   created() {
     firebase
       .firestore()

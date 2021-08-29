@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div>{{ user.displayName }}</div>
     <div class="header-foto">
       <img src="../assets/mainlogo2.png" alt="" />
     </div>
@@ -278,5 +279,10 @@
 
 export default {
   name: "Home",
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
+  },
 }
 </script>

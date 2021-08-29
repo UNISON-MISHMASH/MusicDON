@@ -1,12 +1,11 @@
 <template>
   <div>
     <div class="container">
+      <div>{{ user.displayName }}</div>
       <div id="app" class="start">
         <h2>さあはじめよう！！！</h2>
         <div>
-          <button v-on:click="getContents()">
-            Music Start!
-          </button>
+          <button v-on:click="getContents()">Music Start!</button>
         </div>
         <div class="question">
           <div>
@@ -24,7 +23,7 @@
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       answerText: "",
       audioEle: [
@@ -35,28 +34,33 @@ export default {
       num: 0,
 
       // title:"",
-    };
+    }
+  },
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
   },
   methods: {
-    getContents: function() {
-      let audio = new Audio();
-      this.num = Math.floor(Math.random() * this.audioEle.length);
+    getContents: function () {
+      let audio = new Audio()
+      this.num = Math.floor(Math.random() * this.audioEle.length)
       // if (num == this.audioEle.length) {
       //   num = this.audioEle.length - 1;
       // }
-      audio.src = this.audioEle[this.num].sound;
-      audio.play();
+      audio.src = this.audioEle[this.num].sound
+      audio.play()
     },
 
-    checkAnswer: function() {
+    checkAnswer: function () {
       if (this.answerText == this.audioEle[this.num].title) {
-        alert("正解");
+        alert("正解")
       } else {
-        alert("不正解");
+        alert("不正解")
       }
     },
   },
-};
+}
 </script>
 
 <style>
