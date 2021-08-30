@@ -41,14 +41,14 @@
 
     <div class="screen">
       <p id="title2">NEWS</p>
-      <ul class="slider">
-        <!--<li><img src="../assets/sample1.png" alt="image(1)" /></li>
-        <li><img src="../assets/sample2.png" alt="image(2)" /></li>
-        <li><img src="../assets/sample3.png" alt="image(3)" /></li>
-        <li><img src="../assets/sample4.png" alt="image(4)" /></li>-->
-      </ul>
-      <img v-bind:src="imgName" alt="" />
-    </div>
+      <div>
+        <hooper :settings="hooperSettings">
+          <slide> <img src="../assets/sample1.png" alt="" /></slide>
+          <slide> <img src="../assets/sample2.png" alt="" /></slide>
+          <slide> <img src="../assets/sample3.png" alt="" /></slide>
+          <slide> <img src="../assets/sample4.png" alt="" /></slide>
+        </hooper>
+     
     <div class="Runking">
       <p class="runking-title" id="title1">RUNKING</p>
       <div id="container">
@@ -189,6 +189,14 @@
   margin-right: 25%;
 }
 
+.hooper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 60px;
+}
+
 @media screen and (max-width: 959px) {
   .header-list {
     display: flex;
@@ -229,12 +237,6 @@
   .top5 p {
     font-family: "Dela Gothic One", cursive;
     font-size: 30px;
-  }
-
-  .screen img {
-    width: 90%;
-    margin: auto;
-    margin-bottom: 30px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -277,14 +279,23 @@
 
 <script>
 // @ is an alias to /src
+import { Hooper, Slide } from "hooper"
+import "hooper/dist/hooper.css"
 
 export default {
+  components: {
+    Hooper,
+    Slide,
+  },
   data() {
     return {
-      imgName: require("@/assets/sample1.png"),
+      hooperSettings: {
+        autoPlay: true,
+        playSpeed: "4000",
+        transition: "1000",
+        infiniteScroll: true,
+      },
     }
   },
-
-  method: {},
 }
 </script>
