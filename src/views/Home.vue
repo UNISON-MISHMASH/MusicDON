@@ -48,33 +48,14 @@
           <slide> <img src="../assets/sample3.png" alt="" /></slide>
           <slide> <img src="../assets/sample4.png" alt="" /></slide>
         </hooper>
-     
-    <div class="Runking">
-      <p class="runking-title" id="title1">RUNKING</p>
-      <div id="container">
-        <div class="top5">
-          <img src="../assets/number1.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number2.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number3.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number4.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number5.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
+      </div>
+      <div class="Runking">
+        <p class="runking-title" id="title1">RUNKING</p>
+        <div id="container"></div>
       </div>
     </div>
   </div>
+  <!--home-->
 </template>
 
 <style scoped>
