@@ -51,6 +51,7 @@ export default {
       answers: [],
       questionIndex: 0,
       answer: [],
+      audio: new Audio(),
       questions: [
         {
           question: "この歌はなんでしょう",
@@ -112,18 +113,23 @@ export default {
   },
   methods: {
     checkAnswer: function (index) {
-      console.log("押せたよ")
+      //console.log("押せたよ")
       this.answers.push(index)
       if (!this.completed) {
         this.questionIndex++
-        let audio = new Audio()
-
-        audio.src = this.questions[this.questionIndex].sound
-        audio.play()
+        if (this.questionNow) {
+          this.audio.src = this.questions[this.questionIndex].sound
+          this.audio.play()
+        } else {
+          this.audio.pause()
+          this.audio.currentTime = 0
+        }
       } else {
         this.start = false
+        this.audio.pause()
         this.fTime = performance.now()
         this.result()
+
         for (let i = 0; i < this.answer.length; i++) {
           if (this.answer[i] != this.answers[i]) {
             this.missCount += 1
@@ -135,6 +141,8 @@ export default {
     getContent: function () {
       this.start = true
       this.sTime = performance.now()
+      this.audio.src = this.questions[this.questionIndex].sound
+      this.audio.play()
     },
     result() {
       this.totalTime = ((this.fTime - this.sTime) / 1000).toFixed(2)
