@@ -23,7 +23,7 @@
       </div>
       <div class="container" v-if="completed && start === false">
         <p class="top">結果</p>
-
+        <div>{{ time }}</div>
         <div
           v-for="(question, index) in questions"
           v-bind:key="index"
@@ -87,6 +87,11 @@ export default {
         },
       ],
       start: false,
+      time: 0,
+      sTime: 0,
+      fTime: 0,
+      totalTime: 0,
+      missCount: 0,
     }
   },
   created() {
@@ -117,10 +122,23 @@ export default {
         audio.play()
       } else {
         this.start = false
+        this.fTime = performance.now()
+        this.result()
+        for (let i = 0; i < this.answer.length; i++) {
+          if (this.answer[i] != this.answers[i]) {
+            this.missCount += 1
+          }
+        }
       }
+      this.time = Number(this.missCount) * 3 + Number(this.second)
     },
     getContent: function () {
       this.start = true
+      this.sTime = performance.now()
+    },
+    result() {
+      this.totalTime = ((this.fTime - this.sTime) / 1000).toFixed(2)
+      this.second = this.totalTime
     },
   },
   computed: {
