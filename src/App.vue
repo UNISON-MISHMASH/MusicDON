@@ -4,6 +4,9 @@
       <router-link to="/Home" v-if="Loginchu">Home</router-link>
       <router-link to="/lyricsQuiz" v-if="Loginchu">歌詞クイズ</router-link>
       <router-link to="/introQuiz" v-if="Loginchu">イントロクイズ</router-link>
+      <router-link to="/introQuizTime" v-if="Loginchu"
+        >イントロクイズTimeAtack</router-link
+      >
     </div>
     <router-view />
     <div class="Login">
