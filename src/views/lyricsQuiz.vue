@@ -1,5 +1,6 @@
 <template>
   <div>
+    <<<<<<< HEAD
     <quizstart v-show="pageShow === 0" @my-click="pageShow = $event" />
     <quiz-question
       v-show="pageShow === 1"
@@ -9,6 +10,15 @@
     />
     <quiz-correct v-show="pageShow === 2" @my-click="pageShow = $event" />
     <quiz-wrong v-show="pageShow === 3" @my-click="pageShow = $event" />
+    =======
+    <h1>歌詞クイズ</h1>
+    <div>{{ user.displayName }}</div>
+    <div v-for="(question, index) in questions" v-bind:key="index">
+      {{ question }}
+    </div>
+    <input type="text" v-model="answer" />
+    <button v-on:click="checkAnswer">回答</button>
+    >>>>>>> origin/master
   </div>
 </template>
 
@@ -48,6 +58,11 @@ export default {
     QuizQuestion,
     QuizCorrect,
     QuizWrong,
+  },
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
   },
   created() {
     firebase
