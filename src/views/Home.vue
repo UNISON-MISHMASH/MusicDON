@@ -266,10 +266,15 @@ import "hooper/dist/hooper.css"
 
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
   components: {
     Hooper,
     Slide,
   },
+=======
+name: "Home",
+ 
+>>>>>>> d4239b5be675d815e7cb0fda23526d83081abcf6
   data() {
     return {
       hooperSettings: {
@@ -279,13 +284,25 @@ export default {
         infiniteScroll: true,
       },
     }
+<<<<<<< HEAD
 =======
   name: "Home",
+=======
+
+   components: {
+    Hooper,
+    Slide,
+  },
+>>>>>>> d4239b5be675d815e7cb0fda23526d83081abcf6
   computed: {
     user() {
       return this.$auth.currentUser
     },
+<<<<<<< HEAD
 >>>>>>> c507745879c0e04f3e08b5fc80ff656ae65193a9
+=======
+
+>>>>>>> d4239b5be675d815e7cb0fda23526d83081abcf6
   },
 }
 </script>
