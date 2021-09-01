@@ -1,15 +1,16 @@
 <template>
   <div>
     <h2>正解です！</h2>
-    <div>○○でした</div>
+    <div>{{ newquestion.title }}でした</div>
     <button v-on:click="nextQuiz">次の問題</button>
   </div>
 </template>
 <script>
 export default {
+  props: ["newquestion"],
   methods: {
     nextQuiz: function () {
-      this.$emit("my-click", 1)
+      this.$emit("my-click", 1), this.$emit("nextquestion", 1)
     },
   },
 }
