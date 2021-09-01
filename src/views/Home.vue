@@ -42,39 +42,21 @@
 
     <div class="screen">
       <p id="title2">NEWS</p>
-      <ul class="slider">
-        <li><img src="../assets/sample1.png" alt="image(1)" /></li>
-        <li><img src="../assets/sample2.png" alt="image(2)" /></li>
-        <li><img src="../assets/sample3.png" alt="image(3)" /></li>
-        <li><img src="../assets/sample4.png" alt="image(4)" /></li>
-      </ul>
-    </div>
-    <div class="Runking">
-      <p class="runking-title" id="title1">RUNKING</p>
-      <div id="container">
-        <div class="top5">
-          <img src="../assets/number1.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number2.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number3.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number4.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
-        <div class="top5">
-          <img src="../assets/number5.png" alt="" />
-          <p>さっきーさん１</p>
-        </div>
+      <div>
+        <hooper :settings="hooperSettings">
+          <slide> <img src="../assets/sample1.png" alt="" /></slide>
+          <slide> <img src="../assets/sample2.png" alt="" /></slide>
+          <slide> <img src="../assets/sample3.png" alt="" /></slide>
+          <slide> <img src="../assets/sample4.png" alt="" /></slide>
+        </hooper>
+      </div>
+      <div class="Runking">
+        <p class="runking-title" id="title1">RUNKING</p>
+        <div id="container"></div>
       </div>
     </div>
   </div>
+  <!--home-->
 </template>
 
 <style scoped>
@@ -131,7 +113,7 @@
 .play-mode button {
   font-size: 50px;
   margin-top: 20px;
-
+  color: black;
   padding: 30px;
   font-family: "Oswald", sans-serif;
   border-radius: 100vh;
@@ -183,10 +165,18 @@
   font-family: "Oswald", sans-serif;
   text-align: center;
 }
-.slider img {
+.screen img {
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+}
+
+.hooper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 60px;
 }
 
 @media screen and (max-width: 959px) {
@@ -230,12 +220,6 @@
     font-family: "Dela Gothic One", cursive;
     font-size: 30px;
   }
-
-  .slider img {
-    width: 90%;
-    margin: auto;
-    margin-bottom: 30px;
-  }
 }
 @media screen and (max-width: 480px) {
   .header-foto img {
@@ -274,11 +258,29 @@
   }
 }
 </style>
+
 <script>
 // @ is an alias to /src
+import { Hooper, Slide } from "hooper"
+import "hooper/dist/hooper.css"
 
 export default {
   name: "Home",
+  data() {
+    return {
+      hooperSettings: {
+        autoPlay: true,
+        playSpeed: "4000",
+        transition: "1000",
+        infiniteScroll: true,
+      },
+    }
+  },
+  components: {
+    Hooper,
+    Slide,
+  },
+
   computed: {
     user() {
       return this.$auth.currentUser
