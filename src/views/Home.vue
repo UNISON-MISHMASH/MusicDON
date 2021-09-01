@@ -1,23 +1,21 @@
 <template>
   <div class="home">
-    <div>{{ user.displayName }}</div>
     <div class="header-foto">
-      <img src="../assets/mainlogo2.png" alt="" />
+      <img src="../assets/mainlogo2.png" />
     </div>
     <div class="play-mode">
       <div class="play-item one">
         <div class="play-foto">
           <img
             id="button-one"
-            onmouseover="kirikae1()"
-            onmouseout="kirikaeback1()"
+            v-bind:src="image1"
+            @mouseover="mouseOver1"
+            @mouseout="mouseOut1"
             class="before"
-            src="../assets/newguiter.png"
-            alt=""
           />
         </div>
         <div class="play-button">
-          <button onmouseover="kirikae1()" onmouseout="kirikaeback1()">
+          <button @mouseover="mouseOver1" @mouseout="mouseOut1">
             SINGLE PLAY
           </button>
         </div>
@@ -25,15 +23,14 @@
       <div class="play-item everyone">
         <div class="play-foto">
           <img
-            onmouseover="kirikae2()"
-            onmouseout="kirikaeback2()"
-            id="button-everyone"
-            src="../assets/newband.png"
-            alt=""
+            v-bind:src="image2"
+            @mouseover="mouseOver2"
+            @mouseout="mouseOut2"
+            @id="button - everyone"
           />
         </div>
         <div class="play-button">
-          <button onmouseover="kirikae2()" onmouseout="kirikaeback2()">
+          <button @onmouseover="mouseOver2" @mouseout="mouseOut2">
             PARTY PLAY
           </button>
         </div>
@@ -41,24 +38,64 @@
     </div>
 
     <div class="screen">
-      <p id="title2">NEWS</p>
+      <p id="title1">NEWS</p>
       <div>
         <hooper :settings="hooperSettings">
-          <slide> <img src="../assets/sample1.png" alt="" /></slide>
-          <slide> <img src="../assets/sample2.png" alt="" /></slide>
-          <slide> <img src="../assets/sample3.png" alt="" /></slide>
-          <slide> <img src="../assets/sample4.png" alt="" /></slide>
+          <slide> <img src="../assets/sample1.png" /></slide>
+          <slide> <img src="../assets/sample2.png" /></slide>
+          <slide> <img src="../assets/sample3.png" /></slide>
+          <slide> <img src="../assets/sample4.png" /></slide>
         </hooper>
-      </div>
-      <div class="Runking">
-        <p class="runking-title" id="title1">RUNKING</p>
-        <div id="container"></div>
       </div>
     </div>
   </div>
-  <!--home-->
 </template>
 
+<script>
+// @ is an alias to /src
+import { Hooper, Slide } from "hooper"
+import "hooper/dist/hooper.css"
+
+export default {
+  name: "Home",
+  data() {
+    return {
+      image1: require("@/assets/newguiter-black.png"),
+      image2: require("@/assets/newband-black.png"),
+      hooperSettings: {
+        autoPlay: true,
+        playSpeed: "4000",
+        transition: "1000",
+        infiniteScroll: true,
+      },
+    }
+  },
+  methods: {
+    mouseOver1: function () {
+      this.image1 = require("@/assets/newguiter.png")
+    },
+    mouseOver2: function () {
+      this.image2 = require("@/assets/newband.png")
+    },
+    mouseOut1: function () {
+      this.image1 = require("@/assets/newguiter-black.png")
+    },
+    mouseOut2: function () {
+      this.image2 = require("@/assets/newband-black.png")
+    },
+  },
+  components: {
+    Hooper,
+    Slide,
+  },
+
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
+  },
+}
+</script>
 <style scoped>
 * {
   background-color: rgb(21, 254, 188);
@@ -67,26 +104,6 @@
   font-size: 50px;
 }
 
-.header-list {
-  display: flex;
-  justify-content: center;
-}
-
-.header-item {
-  display: flex;
-  flex-direction: column;
-  margin: 50px 100px 30px 100px;
-  align-items: center;
-}
-.header-item img {
-  width: 50px;
-  height: 50px;
-}
-
-.header-item p {
-  font-family: "Oswald", sans-serif;
-  font-size: 30px;
-}
 .header-foto {
   display: flex;
   justify-content: center;
@@ -128,33 +145,6 @@
   width: 400px;
 }
 
-.runking-title {
-  font-size: 70px;
-  font-family: "Oswald", sans-serif;
-  text-align: center;
-  margin-top: 120px;
-}
-#container {
-  background-color: gray;
-}
-
-.top5 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: none;
-}
-
-.top5 img {
-  margin: 0 20px;
-  height: 90px;
-}
-
-.top5 p {
-  font-family: "Dela Gothic One", cursive;
-  font-size: 40px;
-}
-
 .screen {
   text-align: center;
   margin-top: 120px;
@@ -180,25 +170,6 @@
 }
 
 @media screen and (max-width: 959px) {
-  .header-list {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .header-item {
-    display: flex;
-    flex-direction: column;
-    margin: 25px 25px 10px 25px;
-  }
-
-  .header-item img {
-    width: 30px;
-    height: 30px;
-  }
-  .header-item p {
-    font-family: "Oswald", sans-serif;
-    font-size: 20px;
-  }
   .header-foto img {
     width: 80%;
   }
@@ -214,11 +185,6 @@
     padding: 0.9rem;
     font-family: "Oswald", sans-serif;
     border-radius: 100vh;
-  }
-
-  .top5 p {
-    font-family: "Dela Gothic One", cursive;
-    font-size: 30px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -239,52 +205,10 @@
     font-family: "Oswald", sans-serif;
     border-radius: 100vh;
   }
-  .top5 img {
-    height: 40px;
-  }
 
-  .top5 p {
-    font-family: "Dela Gothic One", cursive;
-    font-size: 20px;
-    color: white;
-  }
   #title1 {
-    font-size: 80%;
-    margin-top: 30px;
-  }
-  #title2 {
     font-size: 80%;
     margin-top: 30px;
   }
 }
 </style>
-
-<script>
-// @ is an alias to /src
-import { Hooper, Slide } from "hooper"
-import "hooper/dist/hooper.css"
-
-export default {
-  name: "Home",
-  data() {
-    return {
-      hooperSettings: {
-        autoPlay: true,
-        playSpeed: "4000",
-        transition: "1000",
-        infiniteScroll: true,
-      },
-    }
-  },
-  components: {
-    Hooper,
-    Slide,
-  },
-
-  computed: {
-    user() {
-      return this.$auth.currentUser
-    },
-  },
-}
-</script>
