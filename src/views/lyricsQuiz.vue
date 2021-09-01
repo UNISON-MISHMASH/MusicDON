@@ -70,19 +70,19 @@ export default {
     },
   },
   created() {
-    firebase
-      .firestore()
-      .collection("lyricsQuiz")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          this.questions.push(doc.data())
-        })
-      })
     for (let i = this.questions.length - 1; this.questions.length > 1; i--) {
       const j = (Math.floor(Math.random() * (i + 1))[
         (this.questions[i], this.questions[j])
       ] = [this.questions[j], this.questions[i]])
+      firebase
+        .firestore()
+        .collection("lyricsQuiz")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.questions.push(doc.data())
+          })
+        })
     }
   },
 }
