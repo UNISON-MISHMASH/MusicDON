@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div>{{ user.displayName }}</div>
     <div class="header-foto">
       <img src="../assets/mainlogo2.png" alt="" />
     </div>
@@ -264,6 +265,7 @@ import { Hooper, Slide } from "hooper"
 import "hooper/dist/hooper.css"
 
 export default {
+<<<<<<< HEAD
   components: {
     Hooper,
     Slide,
@@ -277,6 +279,13 @@ export default {
         infiniteScroll: true,
       },
     }
+=======
+  name: "Home",
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
+>>>>>>> c507745879c0e04f3e08b5fc80ff656ae65193a9
   },
 }
 </script>
