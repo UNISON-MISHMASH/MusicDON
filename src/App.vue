@@ -8,6 +8,7 @@
         >イントロクイズTimeAtack</router-link
       >
     </div>
+
     <router-view />
     <div class="Login">
       <router-link
@@ -121,6 +122,7 @@ export default {
   data() {
     return {
       isLogin: false,
+      isGuest: false,
       Loginchu: false,
       Logoutchu: true,
     }
