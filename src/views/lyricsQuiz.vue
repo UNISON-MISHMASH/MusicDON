@@ -18,7 +18,6 @@
       @nextquestion="num += $event"
       v-bind:newquestion="this.questions[this.num]"
     />
-    <div>{{ user.displayName }}</div>
   </div>
 </template>
 
@@ -71,9 +70,10 @@ export default {
   },
   created() {
     for (let i = this.questions.length - 1; this.questions.length > 1; i--) {
-      const j = (Math.floor(Math.random() * (i + 1))[
-        (this.questions[i], this.questions[j])
-      ] = [this.questions[j], this.questions[i]])
+      const j = Math.floor(Math.random() * (i + 1))
+      const tmp = this.questions[i]
+      this.questions[i] = this.questions[j]
+      this.questions[j] = tmp
       firebase
         .firestore()
         .collection("lyricsQuiz")
