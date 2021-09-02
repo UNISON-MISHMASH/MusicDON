@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="container">
-      <div>{{ user.displayName }}</div>
       <div id="app" class="start">
         <h2>{{ startName }}</h2>
         <div>
@@ -116,11 +115,6 @@ export default {
     showAnswer: function () {
       this.song_title = true
       this.songtitle = "A." + this.audioEle[this.num].title
-    },
-  },
-  computed: {
-    user() {
-      return this.$auth.currentUser
     },
   },
 }
