@@ -23,6 +23,7 @@ export default {
       } else {
         this.$emit("my-click", 3)
       }
+      this.answer = ""
     },
   },
 }

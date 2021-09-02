@@ -63,11 +63,6 @@ export default {
     QuizCorrect,
     QuizWrong,
   },
-  computed: {
-    user() {
-      return this.$auth.currentUser
-    },
-  },
   created() {
     for (let i = this.questions.length - 1; i >= 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
