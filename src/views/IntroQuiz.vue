@@ -3,20 +3,20 @@
     <div class="container">
       <div>{{ user.displayName }}</div>
       <div id="app" class="start">
-        <h2>さあはじめよう！！！</h2>
+        <h2>{{ startName }}</h2>
         <div>
-          <button v-on:click="getContents()">Music Start!</button>
+          <button v-on:click="getContents()">{{ buttonName }}</button>
         </div>
-        <div class="question">
+        <div class="question" v-show="question_Area">
           <div>
             <img id="songimg" v-show="song_img" class="song-img" />
             <div>
               <input v-model="answerText" type="text" placeholder="Answer" />
 
               <button v-on:click="checkAnswer()">回答</button>
-              <h1 id="correct"></h1>
+              <h1>{{ correct }}</h1>
 
-              <h1 id="incorrect"></h1>
+              <h1>{{ incorrect }}</h1>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
             答えを見る
           </button>
           <h2 class="answer_size">
-            <div v-show="song_title" id="songTitle"></div>
+            <div v-show="song_title">{{ songtitle }}</div>
           </h2>
         </div>
       </div>
@@ -37,13 +37,23 @@
 export default {
   data: function () {
     return {
+      //gameStart: false,
       answerText: "",
+      buttonCount: 0,
+      checkCount: 0,
+      startName: "ボタンを押してスタート!!",
+      buttonName: "Music Start!!",
+      audio: new Audio(),
       audioEle: [
         { title: "Shape of You", sound: "./Shape of You.mp3" },
         { title: "はしりがき", sound: "./はしりがき.mp3" },
         { title: "Slow & Easy", sound: "./SlowEasy.mp3" },
       ],
+      correct: "",
+      incorrect: "",
+      songtitle: "",
       num: 0,
+      question_Area: false,
       answer_button: false,
       answer_Area: false,
       song_title: false,
@@ -52,39 +62,65 @@ export default {
       // title:"",
     }
   },
+  // created() {
+  //   this.audio.pause()
+  //   this.audio.currentTime = 0
+  // },
   methods: {
     getContents: function () {
+      //this.gameStart = true
+      this.buttonCount++
       this.song_img = true
-      let audio = new Audio()
-      this.num = Math.floor(Math.random() * this.audioEle.length)
+      this.startName = "ボタンを押して次の曲へ！"
+      this.answerText = ""
+      this.question_Area = true
+      this.answer_button = true
+      this.answer_Area = true
+      if (this.buttonCount >= 1) {
+        this.checkCount = 0
+        this.correct = ""
+        this.incorrect = ""
+        this.songtitle = ""
+        this.buttonName = "Next!!"
+        this.audio.pause()
+        this.audio.currentTime = 0
+        this.num = Math.floor(Math.random() * this.audioEle.length)
+        this.audio.src = this.audioEle[this.num].sound
+        this.audio.play()
+      } else {
+        this.num = Math.floor(Math.random() * this.audioEle.length)
 
-      audio.src = this.audioEle[this.num].sound
-      audio.play()
-
+        this.audio.src = this.audioEle[this.num].sound
+        this.audio.play()
+      }
       var songImg = document.getElementById("songimg")
       songImg.src =
         "https://chicodeza.com/wordpress/wp-content/uploads/toonnkigou-illust-01.jpg"
-
-      this.answer_button = true
-      this.answer_Area = true
     },
 
     checkAnswer: function () {
+      this.checkCount++
       if (this.answerText == this.audioEle[this.num].title) {
         // alert("正解")
-        var correct = document.getElementById("correct")
-        correct.innerHTML = "正解！すごすぎ！"
+
+        this.correct = "正解！すごすぎ！"
       } else {
         // alert("不正解")
-        var incorrect = document.getElementById("incorrect")
-        incorrect.innerHTML = "残念！不正解！"
+
+        this.incorrect = "残念！不正解！"
+      }
+      if (this.checkCount > 1) {
+        this.incorrect = ""
       }
     },
     showAnswer: function () {
-      var songtitle = document.getElementById("songTitle")
-
       this.song_title = true
-      songtitle.innerHTML = "A." + this.audioEle[this.num].title
+      this.songtitle = "A." + this.audioEle[this.num].title
+    },
+  },
+  computed: {
+    user() {
+      return this.$auth.currentUser
     },
   },
 }

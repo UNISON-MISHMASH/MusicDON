@@ -1,10 +1,11 @@
 <template>
   <div id="app">
     <div class="main">
-      <div class="container" v-if="!completed">
+      <div class="container" v-if="!gameEnd">
         <div v-if="!start">
           <p>イントロタイムアタック</p>
           <button v-on:click="getContent">START</button>
+          <p>1つミスるとペナルティー+3秒!!</p>
         </div>
         <div v-if="start">
           <h1 class="top">第{{ questionIndex + 1 }}問</h1>
@@ -21,9 +22,9 @@
           </div>
         </div>
       </div>
-      <div class="container" v-if="completed && start === false">
-        <p class="top">結果</p>
-        <div>{{ time }}</div>
+      <div class="container" v-if="gameEnd && start === false">
+        <p class="top">結果はっぴょう～♪♪</p>
+        <div>あなたの成績は{{ time }}秒です！！！</div>
         <div
           v-for="(question, index) in questions"
           v-bind:key="index"
@@ -33,7 +34,7 @@
             <p class="answer-question">~第{{ index + 1 }}問~</p>
             <span v-if="question.answer == answers[index]">正解</span>
             <span v-else
-              >不正解<br />正解は「{{
+              >残念！不正解<br />正解は「{{
                 question.answers[question.answer]
               }}」</span
             >
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+import firebase from "firebase"
 export default {
   data() {
     return {
@@ -93,9 +95,22 @@ export default {
       fTime: 0,
       totalTime: 0,
       missCount: 0,
+      IntroScore: [],
     }
   },
   created() {
+    firebase
+      .firestore()
+      .collection("IntrScore")
+      .doc("IntroTop8")
+      .get()
+      .then((doc) => {
+        doc.data().Top8.forEach((Top8) => {
+          this.IntroScore.push({
+            ...Top8,
+          })
+        })
+      })
     const shuffle = ([...array]) => {
       for (let i = array.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1))
@@ -115,7 +130,7 @@ export default {
     checkAnswer: function (index) {
       //console.log("押せたよ")
       this.answers.push(index)
-      if (!this.completed) {
+      if (!this.gameEnd) {
         this.questionIndex++
         if (this.questionNow) {
           this.audio.src = this.questions[this.questionIndex].sound
@@ -135,8 +150,23 @@ export default {
             this.missCount += 1
           }
         }
+
+        this.time = Number(this.missCount) * 3 + Number(this.second)
+        this.IntroScore.push({
+          score: this.time,
+          name: this.$auth.currentUser.displayName,
+        })
+        this.IntroScore.sort((a, b) => {
+          return a.score - b.score
+        })
+        this.IntroScore.splice(8, 1)
+
+        firebase
+          .firestore()
+          .collection("IntrScore")
+          .doc("IntroTop8")
+          .set({ Top8: this.IntroScore })
       }
-      this.time = Number(this.missCount) * 3 + Number(this.second)
     },
     getContent: function () {
       this.start = true
@@ -153,7 +183,7 @@ export default {
     questionNow: function () {
       return this.questions[this.questionIndex]
     },
-    completed: function () {
+    gameEnd: function () {
       return this.questions.length == this.answers.length
     },
   },
