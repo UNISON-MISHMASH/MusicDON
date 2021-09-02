@@ -10,6 +10,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "firebase": "^8.10.0",
+    "hooper": "^0.3.4",
+    "jquery": "^3.6.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
