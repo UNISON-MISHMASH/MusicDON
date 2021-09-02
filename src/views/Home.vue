@@ -30,7 +30,7 @@
           />
         </div>
         <div class="play-button">
-          <button @onmouseover="mouseOver2" @mouseout="mouseOut2">
+          <button @mouseover="mouseOver2" @mouseout="mouseOut2">
             PARTY PLAY
           </button>
         </div>
@@ -62,6 +62,7 @@ export default {
     return {
       image1: require("@/assets/newguiter-black.png"),
       image2: require("@/assets/newband-black.png"),
+
       hooperSettings: {
         autoPlay: true,
         playSpeed: "4000",
@@ -162,11 +163,8 @@ export default {
 }
 
 .hooper-slide {
-  display: flex;
-  justify-content: center;
   align-items: center;
-
-  font-size: 60px;
+  width: 85%;
 }
 
 @media screen and (max-width: 959px) {
