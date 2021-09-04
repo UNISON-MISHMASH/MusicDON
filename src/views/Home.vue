@@ -109,6 +109,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .header-foto img {
   width: 900px;
 }
