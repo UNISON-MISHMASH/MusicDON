@@ -1,0 +1,72 @@
+<template>
+  <div id="app">
+    <div class="main">
+      <h1>Time Attack</h1>
+
+      <table>
+        <tr v-for="rank in intro" v-bind:key="rank.rank_id">
+          <td>{{ rank.number }}</td>
+          <td>{{ rank.human }}</td>
+          <td>{{ rank.time }}秒</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+import firebase from "firebase"
+export default {
+  data() {
+    return {
+      intro: [
+        {
+          number: "🥇1位🥇",
+          human: "",
+          time: 0,
+        },
+        {
+          number: "🥈2位🥈",
+          human: "",
+          time: 0,
+        },
+        {
+          number: "🥉3位🥉",
+          human: "",
+          time: 0,
+        },
+        {
+          number: "4位",
+          human: "",
+          time: 0,
+        },
+        {
+          number: "5位",
+          human: "",
+          time: 0,
+        },
+      ],
+      IntroScore: [],
+    }
+  },
+
+  created() {
+    firebase
+      .firestore()
+      .collection("IntrScore")
+      .doc("IntroTop8")
+      .get()
+      .then((doc) => {
+        doc.data().Top8.forEach((Top8) => {
+          this.IntroScore.push({
+            ...Top8,
+          })
+        })
+        for (let i = 0; i < 5; i++) {
+          this.intro[i].time = this.IntroScore[i].score
+          this.intro[i].human = this.IntroScore[i].name
+        }
+      })
+  },
+}
+</script>
