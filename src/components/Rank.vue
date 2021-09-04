@@ -2,14 +2,15 @@
   <div id="app">
     <div class="main">
       <h1>Time Attack</h1>
-
-      <table>
-        <tr v-for="rank in intro" v-bind:key="rank.rank_id">
-          <td>{{ rank.number }}</td>
-          <td>{{ rank.human }}</td>
-          <td>{{ rank.time }}秒</td>
-        </tr>
-      </table>
+      <div class="ranking">
+        <table>
+          <tr v-for="rank in intro" v-bind:key="rank.rank_id">
+            <td>{{ rank.number }}</td>
+            <td>{{ rank.human }}</td>
+            <td>{{ rank.time }}秒</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -70,3 +71,22 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+* {
+  background-color: black;
+}
+.ranking {
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  color: rgb(21, 254, 188);
+}
+
+td {
+  font-size: 20px;
+  color: rgb(21, 254, 188);
+  text-align: center;
+}
+</style>
