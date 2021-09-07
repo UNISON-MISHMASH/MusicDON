@@ -102,12 +102,15 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: rgb(21, 254, 188);
   margin: 0;
   padding: 0;
   font-size: 50px;
 }
 
+.home {
+  height: 100%;
+  background-image: url("../assets/don.jpg");
+}
 .header-foto {
   display: flex;
   justify-content: center;
