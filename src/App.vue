@@ -125,7 +125,6 @@ export default {
       isGuest: false,
       Loginchu: false,
       Logoutchu: true,
-      isGuest: false,
     }
   },
 
