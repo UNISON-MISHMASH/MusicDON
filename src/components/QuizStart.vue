@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>クイズを始める</h2>
+    <h1>クイズを始める</h1>
     <button v-on:click="nextQuiz">クイズスタート</button>
   </div>
 </template>
