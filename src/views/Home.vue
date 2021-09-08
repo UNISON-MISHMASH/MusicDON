@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="header-foto">
-      <img src="../assets/mainlogo2.png" />
+      <img src="../assets/home-logo.png" />
     </div>
     <div class="play-mode">
       <div class="play-item one">
@@ -42,9 +42,9 @@
       <div>
         <hooper :settings="hooperSettings">
           <slide> <Rank /></slide>
-          <slide> <img src="../assets/sample2.png" /></slide>
-          <slide> <img src="../assets/sample3.png" /></slide>
-          <slide> <img src="../assets/sample4.png" /></slide>
+          <slide> <img src="../assets/slide-intro.png" /><br /> </slide>
+          <slide> <img src="../assets/slide-lyrics.png" /></slide>
+          <slide> <img src="../assets/slide-time.png" /></slide>
         </hooper>
       </div>
     </div>
@@ -61,8 +61,8 @@ export default {
   name: "Home",
   data() {
     return {
-      image1: require("@/assets/newguiter-black.png"),
-      image2: require("@/assets/newband-black.png"),
+      image1: require("@/assets/singer-don.png"),
+      image2: require("@/assets/dj-don.png"),
 
       hooperSettings: {
         autoPlay: true,
@@ -75,16 +75,16 @@ export default {
 
   methods: {
     mouseOver1: function () {
-      this.image1 = require("@/assets/newguiter.png")
+      this.image1 = require("@/assets/singer-don.png")
     },
     mouseOver2: function () {
-      this.image2 = require("@/assets/newband.png")
+      this.image2 = require("@/assets/dj-don.png")
     },
     mouseOut1: function () {
-      this.image1 = require("@/assets/newguiter-black.png")
+      this.image1 = require("@/assets/singer-don.png")
     },
     mouseOut2: function () {
-      this.image2 = require("@/assets/newband-black.png")
+      this.image2 = require("@/assets/dj-don.png")
     },
   },
   components: {
@@ -109,7 +109,12 @@ export default {
 
 .home {
   height: 100%;
-  background-image: url("../assets/don.jpg");
+  background-image: url("../assets/background-home.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(15, 20, 100, 0.8);
 }
 .header-foto {
   display: flex;
@@ -136,45 +141,47 @@ export default {
 }
 
 .play-mode button {
-  font-size: 50px;
+  font-size: 30px;
   margin-top: 20px;
   color: black;
+  border: none;
   padding: 30px;
-  font-family: "Oswald", sans-serif;
-  border-radius: 100vh;
-  border: 5px solid #000000;
+  font-family: lithos-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  background: transparent;
 }
 
 .one img {
-  width: 400px;
+  margin-top: 50px;
+  width: 250px;
 }
 
 .everyone img {
+  margin-top: 50px;
   width: 400px;
 }
 
 .screen {
   text-align: center;
-  margin-top: 120px;
 }
 
 .screen p {
   font-size: 70px;
-  font-family: "Oswald", sans-serif;
+  font-family: lithos-pro, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  background: transparent;
   text-align: center;
-}
-.screen img {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  color: black;
 }
 
 .hooper-slide {
   align-items: center;
-  width: 85%;
-  height: 400px;
 }
-
+.screen img {
+  width: 70%;
+}
 . @media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
