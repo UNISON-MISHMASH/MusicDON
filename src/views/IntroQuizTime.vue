@@ -3,7 +3,7 @@
     <div class="main">
       <div class="container" v-if="!gameEnd">
         <div v-if="!start">
-          <p class="gametitle slideInRight">
+          <p class="gametitle slideInRight main">
             Intro <br />
             Time Attack!!
           </p>
@@ -304,6 +304,9 @@ export default {
   animation-name: slideInRight;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+}
+.main {
+  color: coral;
 }
 .starttext {
   font-family: "Viaoda Libre", cursive;
