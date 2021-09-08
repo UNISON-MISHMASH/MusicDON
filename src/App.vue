@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <router-link to="/Home" v-if="Loginchu">
+      <img src="@/assets/logo-app.png" id="logo"
+    /></router-link>
     <div id="nav">
-      <router-link to="/Home" v-if="Loginchu">Home</router-link>
-      <router-link to="/lyricsQuiz" v-if="Loginchu">歌詞クイズ</router-link>
-      <router-link to="/introQuiz" v-if="Loginchu">イントロクイズ</router-link>
+      <router-link to="/lyricsQuiz" v-if="Loginchu"
+        ><img src="@/assets/lyrics-app.png" alt=""
+      /></router-link>
+      <router-link to="/introQuiz" v-if="Loginchu"
+        ><img src="@/assets/intro-app.png" alt=""
+      /></router-link>
       <router-link to="/introQuizTime" v-if="Loginchu"
-        >イントロクイズTimeAtack</router-link
-      >
+        ><img src="@/assets/time-app.png" alt=""
+      /></router-link>
     </div>
 
     <router-view />
@@ -35,21 +41,12 @@
         Guest Login
       </router-link>
     </div>
-    <div>
-      <div v-if="isLogin">こんにちは！</div>
-      <div v-else-if="isGuest">ゲストさん</div>
-      <div v-else></div>
-    </div>
   </div>
 </template>
 
 <style>
-* {
-  background-color: rgb(21, 254, 188);
-  margin: 0;
-  padding: 0;
-}
 #app {
+  background-color: rgba(15, 20, 100, 0.8);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,10 +54,18 @@
   color: #2c3e50;
 }
 
+#logo {
+  width: 100px;
+  margin-top: 50px;
+}
+
 #nav {
   padding: 30px;
 }
-
+#nav img {
+  width: 15%;
+  margin: 0 5%;
+}
 #nav a {
   font-weight: bold;
   color: #2c3e50;

@@ -41,7 +41,7 @@
       <p id="title1">NEWS</p>
       <div>
         <hooper :settings="hooperSettings">
-          <slide> <img src="../assets/sample1.png" /></slide>
+          <slide> <Rank /></slide>
           <slide> <img src="../assets/sample2.png" /></slide>
           <slide> <img src="../assets/sample3.png" /></slide>
           <slide> <img src="../assets/sample4.png" /></slide>
@@ -55,6 +55,7 @@
 // @ is an alias to /src
 import { Hooper, Slide } from "hooper"
 import "hooper/dist/hooper.css"
+import Rank from "@/components/Rank.vue"
 
 export default {
   name: "Home",
@@ -71,6 +72,7 @@ export default {
       },
     }
   },
+
   methods: {
     mouseOver1: function () {
       this.image1 = require("@/assets/newguiter.png")
@@ -88,6 +90,7 @@ export default {
   components: {
     Hooper,
     Slide,
+    Rank,
   },
 
   computed: {
@@ -99,16 +102,20 @@ export default {
 </script>
 <style scoped>
 * {
-  background-color: rgb(21, 254, 188);
   margin: 0;
   padding: 0;
   font-size: 50px;
 }
 
+.home {
+  height: 100%;
+  background-image: url("../assets/don.jpg");
+}
 .header-foto {
   display: flex;
   justify-content: center;
 }
+
 .header-foto img {
   width: 900px;
 }
@@ -165,9 +172,10 @@ export default {
 .hooper-slide {
   align-items: center;
   width: 85%;
+  height: 400px;
 }
 
-@media screen and (max-width: 959px) {
+. @media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
   }
