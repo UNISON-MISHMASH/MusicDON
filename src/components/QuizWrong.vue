@@ -5,7 +5,7 @@
       答えは{{ newquestion.singer }}の<br />
       {{ newquestion.title }}でした！
     </div>
-    <div>
+    <div class="picture">
       <img v-bind:src="newquestion.picture" />
     </div>
     <button v-on:click="nextQuiz">次の問題</button>
@@ -21,3 +21,14 @@ export default {
   },
 }
 </script>
+<style scoped>
+.answer {
+  font-size: 25px;
+  margin-top: 15px;
+}
+.picture {
+  display: inline-block;
+  height: 50px;
+  margin: 0, 30px;
+}
+</style>
