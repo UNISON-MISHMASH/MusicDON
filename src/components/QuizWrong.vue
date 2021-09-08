@@ -1,7 +1,13 @@
 <template>
   <div>
-    <h2>残念、不正解です</h2>
-    <div>答えは{{ newquestion.title }}でした</div>
+    <h1>残念、不正解です</h1>
+    <div class="answer">
+      答えは{{ newquestion.singer }}の<br />
+      {{ newquestion.title }}でした！
+    </div>
+    <div class="picture">
+      <img v-bind:src="newquestion.picture" />
+    </div>
     <button v-on:click="nextQuiz">次の問題</button>
   </div>
 </template>
@@ -15,3 +21,14 @@ export default {
   },
 }
 </script>
+<style scoped>
+.answer {
+  font-size: 25px;
+  margin-top: 15px;
+}
+.picture {
+  display: inline-block;
+  height: 50px;
+  margin: 0, 30px;
+}
+</style>
