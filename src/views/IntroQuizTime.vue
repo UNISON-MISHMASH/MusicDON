@@ -25,6 +25,7 @@
               {{ answer }}
             </button>
           </div>
+          <img src="../assets/character2.png" class="chara" />
         </div>
       </div>
       <div class="container" v-if="gameEnd && start === false">
@@ -46,9 +47,11 @@
               }}」</span
             >
             <span v-else
-              >残念！不正解<br />正解は{{ questions[index].singer }}「{{
-                question.answers[question.answer]
-              }}」</span
+              >残念！不正解<br />正解は{{ questions[index].singer }}「<a
+                href=""
+                id="url"
+                >{{ question.answers[question.answer] }}</a
+              >」</span
             >
           </div>
         </div>
@@ -68,6 +71,7 @@ export default {
       questionIndex: 0,
       answer: [],
       audio: new Audio(),
+      endaudio: new Audio(),
       questions: [
         {
           question: "この歌はなんでしょう",
@@ -80,9 +84,9 @@ export default {
           answer: 0,
           singer: "Ed Sheeran",
           sound: "./Shape of You.mp3",
+          url: "https://youtu.be/JGwWNGJdvx8",
         },
         {
-          question: "この歌はなんでしょう",
           answers: [
             "ブルーベリーナイツ",
             "かくれんぼ",
@@ -92,9 +96,9 @@ export default {
           answer: 2,
           singer: "マカロニえんぴつ",
           sound: "./はしりがき.mp3",
+          url: "https://youtu.be/G-fvkUwK-Wo",
         },
         {
-          question: "この歌はなんでしょう",
           answers: [
             "Slow & Easy",
             "祈り花",
@@ -104,8 +108,29 @@ export default {
           answer: 0,
           singer: "平井大",
           sound: "./SlowEasy.mp3",
+          url: "https://youtu.be/O2LsN1WcABI",
+        },
+        {
+          answers: ["Slow & Easy", "祈り花", "女々しくて", "粉雪"],
+          answer: 2,
+          singer: "ゴールデンボンバー",
+          sound: "./女々しくて.mp3",
+          url: "https://youtu.be/BC9P3DSZu0A",
+        },
+        {
+          answers: [
+            "Step and a step",
+            "Take a picture",
+            "Make you happy",
+            "Boom Boom Boom",
+          ],
+          answer: 2,
+          singer: "NiziU",
+          sound: "./Make you happy.mp3",
+          url: "https://youtu.be/QW28YKqdxe0",
         },
       ],
+      gameaudio: [{ end: "./kansei.mp3" }],
 
       start: false,
       time: 0,
@@ -160,6 +185,8 @@ export default {
       } else {
         this.start = false
         this.audio.pause()
+        // this.endaudio.src = this.gameaudio.end
+        // this.endaudio.play()
         this.fTime = performance.now()
         this.result()
 
@@ -169,12 +196,14 @@ export default {
           }
         }
 
-        this.time = Number(this.missCount) * 3 + Number(this.second)
-        if (this.second < 5) {
+        this.time = Number(this.missCount) * 10 + Number(this.second)
+        if (this.second < 30) {
+          this.starMaker(100)
+          // this.endaudio.src = this.gameaudio.end
+          // this.endaudio.play()
+        } else if (this.second < 40) {
           this.starMaker(50)
-        } else if (this.second < 10) {
-          this.starMaker(25)
-        } else if (this.second < 20) {
+        } else if (this.second < 60) {
           this.starMaker(10)
         } else {
           this.starMaker(0)
@@ -194,6 +223,8 @@ export default {
           .doc("IntroTop8")
           .set({ Top8: this.IntroScore })
       }
+      // var link = document.getElementById("url")
+      // link.href = this.questions[this.questionIndex].url
     },
     getContent: function () {
       this.start = true
@@ -208,7 +239,7 @@ export default {
     starMaker(n) {
       var star = document.createElement("div")
       star.className = "star"
-      star.textContent = "★"
+      star.textContent = "🎵"
       for (var i = 0; i < n; i++) {
         this.starSet(star)
       }
@@ -231,7 +262,7 @@ export default {
           this.parentNode.removeChild(this)
           var star = document.createElement("div")
           star.className = "star"
-          star.textContent = "★"
+          star.textContent = "🎵"
         },
         false
       )
@@ -284,10 +315,15 @@ export default {
   color: crimson;
   font-weight: bold;
 }
-button {
+.flex {
+  display: flex;
+  width: 100%;
+}
+.flex button {
   font-family: "Viaoda Libre", cursive;
   background-color: #333;
   color: #fff;
+  font-size: 18px;
 }
 
 button:hover {
@@ -297,6 +333,9 @@ button:hover {
   background: rgba(255, 255, 255, 0.747);
   border-radius: 20px;
   padding: 20px;
+}
+.chara {
+  size: 10px;
 }
 .answer-container + .answer-container {
   margin-top: 30px;
