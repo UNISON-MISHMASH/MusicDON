@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <router-link to="/Home" v-if="Loginchu">
-      <img src="@/assets/logo-app.png" id="logo"
-    /></router-link>
-    <div id="nav">
-      <router-link to="/lyricsQuiz" v-if="Loginchu"
-        ><img src="@/assets/lyrics-app.png" alt=""
+    <div class="header">
+      <router-link to="/Home" v-if="Loginchu">
+        <img src="@/assets/logo-app.png" id="logo"
       /></router-link>
-      <router-link to="/introQuiz" v-if="Loginchu"
-        ><img src="@/assets/intro-app.png" alt=""
-      /></router-link>
-      <router-link to="/introQuizTime" v-if="Loginchu"
-        ><img src="@/assets/time-app.png" alt=""
-      /></router-link>
+      <div id="nav">
+        <router-link to="/lyricsQuiz" v-if="Loginchu"
+          ><img src="@/assets/lyrics-app.png" alt=""
+        /></router-link>
+        <router-link to="/introQuiz" v-if="Loginchu"
+          ><img src="@/assets/intro-app.png" alt=""
+        /></router-link>
+        <router-link to="/introQuizTime" v-if="Loginchu"
+          ><img src="@/assets/time-app.png" alt=""
+        /></router-link>
+      </div>
     </div>
-
     <router-view />
     <div class="Login">
       <router-link
@@ -45,8 +46,15 @@
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
-  background-color: rgba(15, 20, 100, 0.8);
+  margin: 0;
+  padding: 0;
+
+  background-color: rgba(15, 20, 100);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,8 +63,10 @@
 }
 
 #logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 100px;
-  margin-top: 50px;
 }
 
 #nav {
@@ -90,8 +100,8 @@ button {
 #loginButton {
   color: black;
   font-size: 20px;
-  margin: 5%;
 
+  margin: 5%;
   padding: 30px 50px;
   font-family: "Oswald", sans-serif;
   border-radius: 100vh;

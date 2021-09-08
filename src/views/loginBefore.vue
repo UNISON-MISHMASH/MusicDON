@@ -1,18 +1,30 @@
 <template>
-  <div>
+  <div class="login">
     <div class="header-foto">
-      <img src="../assets/mainlogo2.png" alt="" />
+      <img src="../assets/login-logo.png" alt="" />
     </div>
   </div>
 </template>
 
 <style scoped>
+.login {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: url("../assets/don.png");
+  background-position: center center;
+
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(15, 20, 100, 0.8);
+}
 .header-foto {
   display: flex;
   justify-content: center;
 }
 .header-foto img {
-  width: 900px;
+  margin: 100px;
+  width: 70%;
 }
 @media screen and (max-width: 959px) {
   .header-foto img {
