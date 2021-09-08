@@ -73,14 +73,24 @@ export default {
 </script>
 
 <style scoped>
-* {
-  background-color: black;
+#app {
+  width: 75%;
+  height: 350px;
+  background-image: url("../assets/slide-rank.png");
+  background-size: cover;
+  background-color: transparent;
+  text-align: center;
+  margin: 0 10% 0 10%;
+}
+.main {
+  text-align: center;
 }
 .ranking {
   display: flex;
   justify-content: center;
 }
 h1 {
+  padding-top: 3%;
   color: rgb(21, 254, 188);
 }
 
@@ -88,5 +98,11 @@ td {
   font-size: 20px;
   color: rgb(21, 254, 188);
   text-align: center;
+}
+
+@media screen and (max-width: 1500px) {
+  #app {
+    background-image: url("../assets/slide-rank-M.png");
+  }
 }
 </style>
