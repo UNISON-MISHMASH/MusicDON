@@ -1,14 +1,12 @@
 <template>
   <div>
-    <h1>正解です！</h1>
+    <h1 class="title">正解です！</h1>
     <div class="answer">
       {{ newquestion.singer }}の<br />
       {{ newquestion.title }}でした！
     </div>
-    <div class="picture">
-      <img v-bind:src="newquestion.picture" />
-    </div>
-    <button v-on:click="nextQuiz">次の問題</button>
+    <img v-bind:src="newquestion.picture" class="picture" />
+    <button v-on:click="nextQuiz" class="next-quiz">次の問題</button>
   </div>
 </template>
 <script>
@@ -22,13 +20,25 @@ export default {
 }
 </script>
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap");
 .answer {
   font-size: 25px;
   margin-top: 15px;
+  margin-bottom: 10px;
+  color: aqua;
 }
 .picture {
-  display: inline-block;
-  height: 50px;
-  margin: 0, 30px;
+  display: block;
+  margin: 0 auto;
+  height: 250px;
+  width: 280px;
+}
+.title {
+  font-family: "Kaisei Opti", serif;
+  color: white;
+  padding: 30px;
+}
+.next-quiz:hover {
+  opacity: 0.8;
 }
 </style>

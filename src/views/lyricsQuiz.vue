@@ -43,7 +43,7 @@ export default {
             \n今もこんなに好きでいるのに言葉に出来ない\
             \n君のくれた日々が積み重なり過ぎ去った日々2人歩いた『軌跡』\
             \n僕らの出逢いがもし偶然ならば?運命ならば?\
-            \n君に巡り合えたそれって『奇跡\
+            \n君に巡り合えたそれって『奇跡』\
             \n2人寄り添って歩いて永久の愛を形にして\
             \nいつまでも君の横で笑っていたくて\
             \nアリガトウやAh\
@@ -101,5 +101,8 @@ export default {
 <style scoped>
 * {
   background-image: url("../assets/background-don.png");
+}
+.lyric-quiz {
+  min-height: 70vh;
 }
 </style>
