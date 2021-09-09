@@ -3,6 +3,7 @@ import VueRouter from "vue-router"
 import loginBefore from "@/views/loginBefore.vue"
 import Home from "@/views/Home.vue"
 import firebase from "firebase"
+import Choice from "@/views/choice.vue"
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: "/Home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/Choice",
+    name: "Choice",
+    component: Choice,
   },
 
   {

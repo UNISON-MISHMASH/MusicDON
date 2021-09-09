@@ -30,9 +30,11 @@
           />
         </div>
         <div class="play-button">
-          <button @mouseover="mouseOver2" @mouseout="mouseOut2">
-            PARTY PLAY
-          </button>
+          <router-link to="/Choice">
+            <button @mouseover="mouseOver2" @mouseout="mouseOut2">
+              PARTY PLAY
+            </button></router-link
+          >
         </div>
       </div>
     </div>
