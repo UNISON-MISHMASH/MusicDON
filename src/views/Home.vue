@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="header-foto">
-      <img src="../assets/home-logo.png" />
+      <img src="../assets/mainlogo-yellow.png" />
     </div>
     <div class="play-mode">
       <div class="play-item one">
@@ -15,9 +15,11 @@
           />
         </div>
         <div class="play-button">
-          <button @mouseover="mouseOver1" @mouseout="mouseOut1">
-            SINGLE PLAY
-          </button>
+          <router-link to="/ChoiceSingle">
+            <button @mouseover="mouseOver1" @mouseout="mouseOut1">
+              SINGLE PLAY
+            </button>
+          </router-link>
         </div>
       </div>
       <div class="play-item everyone">
@@ -30,9 +32,11 @@
           />
         </div>
         <div class="play-button">
-          <button @mouseover="mouseOver2" @mouseout="mouseOut2">
-            PARTY PLAY
-          </button>
+          <router-link to="/ChoiceParty">
+            <button @mouseover="mouseOver2" @mouseout="mouseOut2">
+              PARTY PLAY
+            </button></router-link
+          >
         </div>
       </div>
     </div>

@@ -3,6 +3,8 @@ import VueRouter from "vue-router"
 import loginBefore from "@/views/loginBefore.vue"
 import Home from "@/views/Home.vue"
 import firebase from "firebase"
+import ChoiceSingle from "@/views/choiceSingle.vue"
+import ChoiceParty from "@/views/choiceParty.vue"
 
 Vue.use(VueRouter)
 
@@ -20,6 +22,16 @@ const routes = [
     path: "/Home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/ChoiceSingle",
+    name: "ChoiceSingle",
+    component: ChoiceSingle,
+  },
+  {
+    path: "/ChoiceParty",
+    name: "ChoiceParty",
+    component: ChoiceParty,
   },
 
   {
