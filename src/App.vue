@@ -54,14 +54,16 @@
   margin: 0;
   padding: 0;
 
-  background-color: rgba(15, 20, 100);
+  background-color: rgba(15, 20, 100, 0.6);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
+.header {
+  background-color: rgba(119, 136, 153, 0);
+}
 #logo {
   position: absolute;
   top: 10px;
