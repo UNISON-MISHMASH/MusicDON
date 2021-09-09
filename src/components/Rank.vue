@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="main">
-      <h1>Time Attack</h1>
+      <div class="title">
+        <img src="../assets/slide-rank-title.png" alt="" />
+      </div>
       <div class="ranking">
         <table>
           <tr v-for="rank in intro" v-bind:key="rank.rank_id">
@@ -85,13 +87,14 @@ export default {
 .main {
   text-align: center;
 }
+
+.main img {
+  width: 30%;
+  margin-top: 30px;
+}
 .ranking {
   display: flex;
   justify-content: center;
-}
-h1 {
-  padding-top: 3%;
-  color: rgb(21, 254, 188);
 }
 
 td {
