@@ -7,6 +7,8 @@
             Intro <br />
             Time Attack!!
           </p>
+          <img src="../assets/dj-don.png" class="start-img" />
+          <img src="../assets/dj-don-re.png" class="start-re-img" />
           <button v-on:click="getContent">START</button>
           <p class="starttext slideInRight">
             Penalty <span>10</span> seconds per mistake
@@ -14,10 +16,13 @@
         </div>
         <div v-if="start">
           <h1 class="top gametitle">第{{ questionIndex + 1 }}問</h1>
-
+          <div>
+            <h2 class="game-message">Choose quickly!!</h2>
+          </div>
           <div class="flex">
             <button
               type="button"
+              class="btn-choice"
               v-for="(answer, index) in questionNow.answers"
               v-bind:key="index"
               v-on:click="checkAnswer(index)"
@@ -42,17 +47,18 @@
           <div>
             <p class="answer-question">~第{{ index + 1 }}問~</p>
             <span v-if="question.answer == answers[index]"
-              >正解！！<br />{{ questions[index].singer }}「{{
-                question.answers[question.answer]
-              }}」</span
-            >
-            <span v-else
-              >残念！不正解<br />正解は{{ questions[index].singer }}「<a
-                href=""
-                id="url"
+              >正解！！<br />{{ questions[index].singer }}「<a
+                v-bind:href="questions[index].mv"
                 >{{ question.answers[question.answer] }}</a
               >」</span
             >
+            <span v-else
+              >残念！不正解<br />正解は{{ questions[index].singer }}「<a
+                v-bind:href="questions[index].mv"
+                >{{ question.answers[question.answer] }}</a
+              >」</span
+            >
+            <img class="answer-img" v-bind:src="questions[index].url" alt="" />
           </div>
         </div>
         <button v-on:click="reset">RESET</button>
@@ -63,7 +69,7 @@
 
 <script>
 import firebase from "firebase"
-//import Star from "@/components/Star.vue"
+//import star from "@/components/star.vue"
 export default {
   data() {
     return {
@@ -84,7 +90,8 @@ export default {
           answer: 0,
           singer: "Ed Sheeran",
           sound: "./Shape of You.mp3",
-          url: "https://youtu.be/JGwWNGJdvx8",
+          url: "https://images-fe.ssl-images-amazon.com/images/I/51inO4DBH0L._SY445_SX342_QL70_ML2_.jpg",
+          mv: "https://youtu.be/JGwWNGJdvx8",
         },
         {
           answers: [
@@ -96,7 +103,8 @@ export default {
           answer: 2,
           singer: "マカロニえんぴつ",
           sound: "./はしりがき.mp3",
-          url: "https://youtu.be/G-fvkUwK-Wo",
+          url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
+          mv: "https://youtu.be/G-fvkUwK-Wo",
         },
         {
           answers: [
@@ -108,14 +116,16 @@ export default {
           answer: 0,
           singer: "平井大",
           sound: "./SlowEasy.mp3",
-          url: "https://youtu.be/O2LsN1WcABI",
+          url: "https://images-na.ssl-images-amazon.com/images/I/51S9KQubcdL._AC_SY450_.jpg",
+          mv: "https://youtu.be/O2LsN1WcABI",
         },
         {
           answers: ["Slow & Easy", "祈り花", "女々しくて", "粉雪"],
           answer: 2,
           singer: "ゴールデンボンバー",
           sound: "./女々しくて.mp3",
-          url: "https://youtu.be/BC9P3DSZu0A",
+          url: "https://hominis.media/2019/07/images/GOLDENBOMBER.jpg",
+          mv: "https://youtu.be/BC9P3DSZu0A",
         },
         {
           answers: [
@@ -127,7 +137,8 @@ export default {
           answer: 2,
           singer: "NiziU",
           sound: "./Make you happy.mp3",
-          url: "https://youtu.be/QW28YKqdxe0",
+          url: "https://images-fe.ssl-images-amazon.com/images/I/51tKcC7n1bL._SY445_SX342_QL70_ML2_.jpg",
+          mv: "https://youtu.be/QW28YKqdxe0",
         },
       ],
       gameaudio: [{ end: "./kansei.mp3" }],
@@ -198,11 +209,11 @@ export default {
 
         this.time = Number(this.missCount) * 10 + Number(this.second)
         if (this.second < 30) {
-          this.starMaker(100)
+          this.starMaker(50)
           // this.endaudio.src = this.gameaudio.end
           // this.endaudio.play()
         } else if (this.second < 40) {
-          this.starMaker(50)
+          this.starMaker(30)
         } else if (this.second < 60) {
           this.starMaker(10)
         } else {
@@ -223,8 +234,8 @@ export default {
           .doc("IntroTop8")
           .set({ Top8: this.IntroScore })
       }
-      // var link = document.getElementById("url")
-      // link.href = this.questions[this.questionIndex].url
+      // var link = document.getElementById("mv")
+      // link.href = this.questions[this.questionIndex].mv
     },
     getContent: function () {
       this.start = true
@@ -239,7 +250,7 @@ export default {
     starMaker(n) {
       var star = document.createElement("div")
       star.className = "star"
-      star.textContent = "🎵"
+      star.textContent = "♬"
       for (var i = 0; i < n; i++) {
         this.starSet(star)
       }
@@ -249,20 +260,20 @@ export default {
       var starClone = clone.cloneNode(true)
       var starStyle = starClone.style
 
-      //星の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
+      //音符の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
       starStyle.left = 100 * Math.random() + "%"
       starStyle.animationDelay = 8 * Math.random() + "s"
       starStyle.fontSize = ~~(50 * Math.random() + 20) + "px"
       document.body.appendChild(starClone)
 
-      //星一つのアニメーションが終わったら新しい星を生成
+      //音符一つのアニメーションが終わったら新しい音符を生成
       starClone.addEventListener(
         "animationend",
         function () {
           this.parentNode.removeChild(this)
           var star = document.createElement("div")
           star.className = "star"
-          star.textContent = "🎵"
+          star.textContent = "♬"
         },
         false
       )
@@ -283,6 +294,22 @@ export default {
 </script>
 
 <style>
+.container {
+  background-image: url("../assets/background-don.png");
+  position: relative;
+}
+.start-img {
+  position: absolute;
+  top: 200px;
+  left: 70px;
+  width: 25%;
+}
+.start-re-img {
+  position: absolute;
+  top: 200px;
+  right: 70px;
+  width: 25%;
+}
 .gametitle {
   font-size: 70px;
   font-weight: bold;
@@ -318,38 +345,54 @@ export default {
   color: crimson;
   font-weight: bold;
 }
+.game-message {
+  font-size: 40px;
+  color: greenyellow;
+  font-weight: bold;
+  font-family: "Viaoda Libre", cursive;
+}
 .flex {
   display: flex;
   width: 100%;
 }
 .flex button {
   font-family: "Viaoda Libre", cursive;
-  background-color: #333;
-  color: #fff;
-  font-size: 18px;
+  background-color: greenyellow;
+  color: black;
+  font-size: 20px;
+  size: 50px;
 }
 
 button:hover {
   background-color: #59b1eb;
 }
 .answer-container {
+  text-align: center;
   background: rgba(255, 255, 255, 0.747);
   border-radius: 20px;
   padding: 20px;
 }
-.chara {
-  size: 10px;
+.chara img {
+  width: 300px;
+  height: auto;
 }
 .answer-container + .answer-container {
   margin-top: 30px;
 }
 .answer-question {
-  background: rgba(255, 255, 255, 0.747);
-  font-size: 26px;
+  background: black;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .answer-container span {
   font-size: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+img {
+  width: 200px;
+  height: auto;
 }
 .star {
   animation: kirakira 8s linear;
