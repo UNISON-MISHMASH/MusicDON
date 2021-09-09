@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="header-foto">
-      <img src="../assets/home-logo.png" />
+      <img src="../assets/mainlogo-yellow.png" />
     </div>
     <div class="play-mode">
       <div class="play-item one">
