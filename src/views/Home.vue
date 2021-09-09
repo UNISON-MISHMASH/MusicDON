@@ -182,7 +182,7 @@ export default {
 .screen img {
   width: 70%;
 }
-. @media screen and (max-width: 959px) {
+@media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
   }
