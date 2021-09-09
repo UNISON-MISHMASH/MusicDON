@@ -15,9 +15,11 @@
           />
         </div>
         <div class="play-button">
-          <button @mouseover="mouseOver1" @mouseout="mouseOut1">
-            SINGLE PLAY
-          </button>
+          <router-link to="/ChoiceSingle">
+            <button @mouseover="mouseOver1" @mouseout="mouseOut1">
+              SINGLE PLAY
+            </button>
+          </router-link>
         </div>
       </div>
       <div class="play-item everyone">
@@ -30,7 +32,7 @@
           />
         </div>
         <div class="play-button">
-          <router-link to="/Choice">
+          <router-link to="/ChoiceParty">
             <button @mouseover="mouseOver2" @mouseout="mouseOut2">
               PARTY PLAY
             </button></router-link

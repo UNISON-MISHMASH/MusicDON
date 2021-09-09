@@ -4,7 +4,7 @@
       <img src="../assets/choice-title.png" alt="" />
     </div>
     <div class="button">
-      <router-link to="/introquiz">
+      <router-link to="/igitntroquiz">
         <button>Intro Quiz</button>
       </router-link>
       <router-link to="/lyricsQuiz"><button>Lyrics Quiz</button></router-link>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "Choice",
+  name: "ChoiceParty",
 }
 </script>
 
