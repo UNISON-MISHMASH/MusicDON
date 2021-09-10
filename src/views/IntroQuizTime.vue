@@ -3,10 +3,10 @@
     <div class="main">
       <div class="container" v-if="!gameEnd">
         <div v-if="!start">
-          <p class="gametitle slideInRight main">
-            Intro <br />
-            Time Attack!!
-          </p>
+          <div>
+            <img src="../assets/title-Time.png" class="intr-app slideInRight" />
+          </div>
+          <h1 class="slideInRight">VS everyone</h1>
           <img src="../assets/dj-don.png" class="start-img" />
           <img src="../assets/dj-don-re.png" class="start-re-img" />
           <button v-on:click="getContent">START</button>
@@ -69,6 +69,7 @@
 
 <script>
 import firebase from "firebase"
+// import confetti from "canvas-confetti"
 //import star from "@/components/star.vue"
 export default {
   data() {
@@ -304,6 +305,10 @@ export default {
   left: 70px;
   width: 25%;
 }
+.intr-app {
+  width: 40%;
+  margin-top: 30px;
+}
 .start-re-img {
   position: absolute;
   top: 200px;
@@ -313,7 +318,7 @@ export default {
 .gametitle {
   font-size: 70px;
   font-weight: bold;
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
 }
 @keyframes slideInRight {
   from {
@@ -331,12 +336,13 @@ export default {
   animation-name: slideInRight;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  font-family: "DotGothic16", sans-serif;
 }
 .main {
   color: coral;
 }
 .starttext {
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
   font-size: 30px;
 
   margin: 50px;
@@ -349,7 +355,7 @@ export default {
   font-size: 40px;
   color: greenyellow;
   font-weight: bold;
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
 }
 .flex {
   display: flex;

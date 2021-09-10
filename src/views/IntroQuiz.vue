@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="container" v-if="start">
-      <p class="gametitle slideInRight main">Intro Quiz <br />with everyone</p>
+      <div>
+        <img src="../assets/intoro-app.png" class="intro-ap slideInRight" />
+      </div>
+      <p class="gametitle slideInRight main">with everyone</p>
 
       <img src="../assets/singer-re-don.png" class="singer-re" />
       <img src="../assets/singer-don.png" class="singer" />
@@ -61,6 +64,7 @@
 </template>
 
 <script>
+import confetti from "canvas-confetti"
 export default {
   data: function () {
     return {
@@ -153,6 +157,11 @@ export default {
 
         this.correct_Area = true
         this.correct = "正解！素晴らしい！"
+        confetti({
+          particleCount: 400,
+          spread: 90,
+          origin: { y: 0.4 },
+        })
       } else {
         // alert("不正解")
         this.incorrect_Area = true
@@ -182,10 +191,14 @@ export default {
   width: 100%;
   height: 50vh;
 }
+.intro-ap {
+  width: 40%;
+  margin-top: 30px;
+}
 .gametitle {
-  font-size: 70px;
+  font-size: 30px;
   font-weight: bold;
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
 }
 @keyframes slideInRight {
   from {
@@ -203,17 +216,18 @@ export default {
   animation-timing-function: ease-out;
 }
 .start-name {
-  font-size: 50px;
+  margin-top: 60px;
+  font-size: 30px;
 }
 .singer-re {
   position: absolute;
-  top: 180px;
+  top: 160px;
   left: 45px;
   width: 25%;
 }
 .singer {
   position: absolute;
-  top: 180px;
+  top: 160px;
   right: 45px;
   width: 25%;
 }
@@ -245,11 +259,11 @@ img {
 }
 h1 {
   color: coral;
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
 }
 h2 {
   color: coral;
-  font-family: "Viaoda Libre", cursive;
+  font-family: "DotGothic16", sans-serif;
 }
 button {
   background-color: #333;
