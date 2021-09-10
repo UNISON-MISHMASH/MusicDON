@@ -117,6 +117,10 @@ export default {
   //   this.audio.pause()
   //   this.audio.currentTime = 0
   // },
+  beforeDestroy() {
+    this.audio.pause()
+    this.audio.currentTime = 0
+  },
   methods: {
     getContents: function () {
       this.start = false

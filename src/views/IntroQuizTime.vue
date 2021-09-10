@@ -153,6 +153,10 @@ export default {
       IntroScore: [],
     }
   },
+  beforeDestroy() {
+    this.audio.pause()
+    this.audio.currentTime = 0
+  },
   created() {
     firebase
       .firestore()
