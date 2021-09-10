@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=DotGothic16&display=swap")
 .answer {
   font-size: 25px;
   margin-top: 15px;
@@ -35,7 +35,7 @@ export default {
   margin: 0, 30px;
 }
 .title {
-  font-family: "Kaisei Opti", serif;
+  font-family: "Caveat", cursive;
   color: white;
   padding: 30px;
 }

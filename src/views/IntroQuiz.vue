@@ -1,60 +1,32 @@
 <template>
   <div>
-    <div class="container" v-if="start">
-      <p class="gametitle slideInRight main">Intro Quiz <br />with everyone</p>
+    <div class="container">
+      <div id="app" class="start">
+        <h2>{{ startName }}</h2>
+        <div>
+          <button v-on:click="getContents()">{{ buttonName }}</button>
+        </div>
+        <div class="question" v-show="question_Area">
+          <div>
+            <img id="songimg" v-show="song_img" class="song-img" />
+            <div>
+              <input v-model="answerText" type="text" placeholder="Answer" />
 
-      <img src="../assets/singer-re-don.png" class="singer-re" />
-      <img src="../assets/singer-don.png" class="singer" />
+              <button v-on:click="checkAnswer()">回答</button>
+              <h1>{{ correct }}</h1>
 
-      <div>
-        <button v-on:click="getContents()">{{ buttonName }}</button>
-        <h2 class="start-name slideInRight">{{ startName }}</h2>
-      </div>
-    </div>
-    <div class="container" v-show="question_Area">
-      <h2 class="question-text">Listen Carefully</h2>
-      <img src="../assets/saiseigamen.png" class="saisei-img" />
-      <div>
-        <input v-model="answerText" type="text" placeholder="Answer" />
-      </div>
-      <div>
-        <button v-on:click="checkAnswer()">回答</button>
-      </div>
-    </div>
-    <div class="container" v-if="correct_Area">
-      <div class="game-correct">
-        <h1>{{ correct }}</h1>
-        <h1>
-          {{ this.audioEle[this.num].singer }}「<a
-            v-bind:href="this.audioEle[this.num].mv"
-            >{{ this.audioEle[this.num].title }}</a
-          >」
-        </h1>
-      </div>
-      <img v-bind:src="this.audioEle[this.num].url" />
-      <img src="../assets/character3.png" alt="" />
-      <div>
-        <button v-on:click="getContents()">Next</button>
-        <button v-on:click="reset">RESET</button>
-      </div>
-    </div>
-
-    <div class="container" v-if="incorrect_Area">
-      <div class="answer-box">
-        <h1>{{ incorrect }}</h1>
-        <h1>
-          {{ this.audioEle[this.num].singer }}「<a
-            v-bind:href="this.audioEle[this.num].mv"
-            >{{ this.audioEle[this.num].title }}</a
-          >」
-        </h1>
-      </div>
-
-      <img v-bind:src="this.audioEle[this.num].url" />
-      <img src="../assets/character4.png" alt="" />
-      <div>
-        <button v-on:click="getContents()">Next</button>
-        <button v-on:click="reset">RESET</button>
+              <h1>{{ incorrect }}</h1>
+            </div>
+          </div>
+        </div>
+        <div class="answer_area" v-show="answer_Area">
+          <button v-if="answer_button" v-on:click="showAnswer()">
+            答えを見る
+          </button>
+          <h2 class="answer_size">
+            <div v-show="song_title">{{ songtitle }}</div>
+          </h2>
+        </div>
       </div>
     </div>
   </div>
@@ -64,44 +36,23 @@
 export default {
   data: function () {
     return {
-      start: true,
+      //gameStart: false,
       answerText: "",
       buttonCount: 0,
       checkCount: 0,
-      startName: "Press the button to start!!",
+      startName: "ボタンを押してスタート!!",
       buttonName: "Music Start!!",
       audio: new Audio(),
       audioEle: [
-        {
-          title: "Shape of You",
-          singer: "Ed Sheeran",
-          sound: "./Shape of You.mp3",
-          url: "https://images-fe.ssl-images-amazon.com/images/I/51inO4DBH0L._SY445_SX342_QL70_ML2_.jpg",
-          mv: "https://youtu.be/JGwWNGJdvx8",
-        },
-        {
-          title: "はしりがき",
-          singer: "マカロニエンピツ",
-          sound: "./はしりがき.mp3",
-          url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
-          mv: "https://youtu.be/G-fvkUwK-Wo",
-        },
-        {
-          title: "Slow & Easy",
-          singer: "平井大",
-          sound: "./SlowEasy.mp3",
-          url: "https://images-na.ssl-images-amazon.com/images/I/51S9KQubcdL._AC_SY450_.jpg",
-          mv: "https://youtu.be/1mz-A--mANU",
-        },
+        { title: "Shape of You", sound: "./Shape of You.mp3" },
+        { title: "はしりがき", sound: "./はしりがき.mp3" },
+        { title: "Slow & Easy", sound: "./SlowEasy.mp3" },
       ],
       correct: "",
       incorrect: "",
       songtitle: "",
       num: 0,
-
       question_Area: false,
-      correct_Area: false,
-      incorrect_Area: false,
       answer_button: false,
       answer_Area: false,
       song_title: false,
@@ -116,10 +67,10 @@ export default {
   // },
   methods: {
     getContents: function () {
-      this.start = false
+      //this.gameStart = true
       this.buttonCount++
       this.song_img = true
-
+      this.startName = "ボタンを押して次の曲へ！"
       this.answerText = ""
       this.question_Area = true
       this.answer_button = true
@@ -129,11 +80,9 @@ export default {
         this.correct = ""
         this.incorrect = ""
         this.songtitle = ""
-        this.correct_Area = false
-        this.incorrect_Area = false
+        this.buttonName = "Next!!"
         this.audio.pause()
         this.audio.currentTime = 0
-        this.audio.loop = true
         this.num = Math.floor(Math.random() * this.audioEle.length)
         this.audio.src = this.audioEle[this.num].sound
         this.audio.play()
@@ -142,41 +91,39 @@ export default {
 
         this.audio.src = this.audioEle[this.num].sound
         this.audio.play()
-        this.audio.loop = true
       }
+      var songImg = document.getElementById("songimg")
+      songImg.src =
+        "https://chicodeza.com/wordpress/wp-content/uploads/toonnkigou-illust-01.jpg"
     },
 
     checkAnswer: function () {
       this.checkCount++
-      this.question_Area = false
-
       if (this.answerText == this.audioEle[this.num].title) {
         // alert("正解")
-        this.correct_Area = true
-        this.correct = "正解！素晴らしい！"
+
+        this.correct = "正解！すごすぎ！"
       } else {
         // alert("不正解")
-        this.incorrect_Area = true
+
         this.incorrect = "残念！不正解！"
       }
       if (this.checkCount > 1) {
         this.incorrect = ""
       }
     },
-    reset: function () {
-      this.audio.pause()
-      this.audio.currentTime = 0
-      this.$router.go({ path: this.$router.currentRoute.path, force: true })
+    showAnswer: function () {
+      this.song_title = true
+      this.songtitle = "A." + this.audioEle[this.num].title
     },
   },
 }
 </script>
 
-<style scoped>
+<style>
 .container {
-  position: relative;
   min-height: 100vh;
-  background-image: url("../assets/background-don.png");
+  background-color: aquamarine;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -184,76 +131,13 @@ export default {
   height: 50vh;
 }
 
-.gametitle {
-  font-size: 70px;
-  font-weight: bold;
-  font-family: "Viaoda Libre", cursive;
-}
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(150px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.slideInRight {
-  animation-name: slideInRight;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-}
-.start-name {
-  font-size: 50px;
-}
-.singer-re {
-  position: absolute;
-  top: 180px;
-  left: 45px;
-  width: 25%;
-}
-.singer {
-  position: absolute;
-  top: 180px;
-  right: 45px;
-  width: 25%;
-}
-.chara img {
-  width: 500px;
-  height: auto;
-}
-img {
-  width: 400px;
-  height: auto;
-}
-.saisei-img {
-  position: relative;
-  width: 50%;
-}
-.question-text {
-  font-size: 80px;
-}
-.main {
-  color: coral;
-}
 .question {
   display: inline-block;
   height: 100%;
-  background-image: url(../assets/saiseigamen.png);
+  background-color: #f1f1f1;
   border: solid 2px black;
   margin-top: 20px;
   padding: 20px;
-}
-h1 {
-  color: coral;
-  font-family: "Viaoda Libre", cursive;
-}
-h2 {
-  color: coral;
-  font-family: "Viaoda Libre", cursive;
 }
 button {
   background-color: #333;
@@ -263,29 +147,35 @@ button {
 button:hover {
   background-color: #59b1eb;
 }
-
-.answer-box {
-  background: black;
-  border-radius: 20px;
-  padding: 20px;
+.song-img {
+  width: 100%;
 }
-.game-correct {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.747);
-  border-radius: 20px;
+.start {
+  display: inline-block;
+  padding-top: 100px;
+  padding-bottom: 30px; /*ヘッダーとフッターの高さの分調節-->*/
+  width: 70%;
   padding: 20px;
+  margin-bottom: 60px;
+  border: solid 1px black;
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
 }
-
 input {
-  position: relative;
-  width: 50%;
   color: black;
   text-align: center;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: bold;
-  font-family: "Viaoda Libre", cursive;
+}
+#correct {
+  color: red;
 }
 
+#incorrect {
+  color: blue;
+}
 .answer_size {
   padding-top: 20px;
   padding-bottom: 20px;

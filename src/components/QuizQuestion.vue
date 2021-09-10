@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+import confetti from "canvas-confetti"
 export default {
   data() {
     return {
@@ -20,7 +21,7 @@ export default {
   methods: {
     checkanswer: function () {
       if (this.answer === this.newquestion.title) {
-        this.$emit("my-click", 2)
+        confetti(), this.$emit("my-click", 2)
       } else {
         this.$emit("my-click", 3)
       }

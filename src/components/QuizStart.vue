@@ -19,8 +19,8 @@ export default {
 }
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap");
-.start:hover {
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=DotGothic16&display=swap")
+  .start: hover {
   opacity: 0.8;
 }
 .title {
