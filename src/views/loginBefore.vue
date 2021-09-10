@@ -1,9 +1,5 @@
 <template>
-  <div class="login">
-    <div class="header-foto">
-      <img src="../assets/login-logo.png" alt="" />
-    </div>
-  </div>
+  <div class="login"></div>
 </template>
 
 <style scoped>
@@ -11,10 +7,9 @@
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url("../assets/don.png");
+  background-image: url("../assets/login-image.png");
   background-position: center center;
 
-  background-attachment: fixed;
   background-size: cover;
   background-color: rgba(15, 20, 100, 0.8);
 }

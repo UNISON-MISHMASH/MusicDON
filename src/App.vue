@@ -1,49 +1,85 @@
 <template>
   <div id="app">
     <div class="header">
-      <router-link to="/Home" v-if="Loginchu">
-        <img src="@/assets/logo-app.png" id="logo"
-      /></router-link>
+      <div class="logo">
+        <router-link to="/Home">
+          <img src="@/assets/home-logo.png"
+        /></router-link>
+      </div>
       <div id="nav">
-        <router-link to="/lyricsQuiz" v-if="Loginchu"
+        <router-link to="/lyricsQuiz"
           ><img src="@/assets/lyrics-app.png" alt=""
         /></router-link>
-        <router-link to="/introQuiz" v-if="Loginchu"
+        <router-link to="/introQuiz"
           ><img src="@/assets/intro-app.png" alt=""
         /></router-link>
-        <router-link to="/introQuizTime" v-if="Loginchu"
+        <router-link to="/introQuizTime"
           ><img src="@/assets/time-app.png" alt=""
         /></router-link>
       </div>
     </div>
     <router-view />
     <div class="Login">
-      <router-link
-        to="/Home"
-        id="loginButton"
-        @click.native="login"
-        v-if="Logoutchu"
-        >Login
+      <router-link to="/Home" @click.native="login"
+        ><img src="@/assets/play-now.png" alt="" />
       </router-link>
 
-      <router-link
-        to="/"
-        id="logoutButton"
-        @click.native="logout"
-        v-if="Loginchu"
+      <!--<router-link to="/" id="logoutButton" @click.native="logout"
         >Logout
       </router-link>
-      <router-link
-        to="/Home"
-        id="loginButton"
-        @click.native="Guest"
-        v-if="Logoutchu"
-      >
+      <router-link to="/Home" id="loginButton" @click.native="Guest">
         Guest Login
-      </router-link>
+      </router-link>-->
     </div>
   </div>
 </template>
+<script>
+import firebase from "firebase"
+
+export default {
+  methods: {
+    login() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          // @type {firebase.auth.OAuthCredential} */
+          console.log({ result })
+          //if (result.user) {
+          //}
+        })
+    },
+
+    logout() {
+      firebase.auth().signOut()
+      /*.then(() => {
+      /*this.isLogin = false
+      this.Logoutchu = true
+      this.Loginchu = false
+      })*/
+    },
+
+    Guest() {
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then((result) => {
+          console.log(result)
+          // this.isGuest = true
+          //this.Logoutchu = false
+          //this.Loginchu = true
+        })
+    },
+  },
+  computed: {
+    user() {
+      return this.$auth.currentUser
+    },
+  },
+}
+</script>
 
 <style>
 * {
@@ -53,63 +89,46 @@
 #app {
   margin: 0;
   padding: 0;
-
-  background-color: rgba(15, 20, 100, 0.6);
+  background-color: rgba(15, 20, 100);
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 .header {
-  background-color: rgba(119, 136, 153, 0);
+  background: transparent;
 }
-#logo {
+.logo {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 100px;
+}
+.logo img {
+  width: 350px;
 }
 
 #nav {
   padding: 30px;
+  text-align: right;
 }
 #nav img {
-  width: 15%;
-  margin: 0 5%;
+  text-align: right;
+  width: 20%;
+  margin: 0 30px;
 }
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 .Login {
   display: flex;
   justify-content: center;
 }
-button {
-  font-size: 20px;
-  margin: 5%;
-
-  padding: 30px 50px;
-  font-family: "Oswald", sans-serif;
-  border-radius: 100vh;
-  border: 5px solid #000000;
+.Login img {
+  width: 50%;
+  margin-top: 10%;
+  margin-bottom: 20%;
 }
-#loginButton {
-  color: black;
-  font-size: 20px;
 
-  margin: 5%;
-  padding: 30px 50px;
-  font-family: "Oswald", sans-serif;
-  border-radius: 100vh;
-  border: 5px solid #000000;
-}
-#logoutButton {
+/*#logoutButton {
   color: black;
   font-size: 20px;
   margin: 5%;
@@ -118,8 +137,13 @@ button {
   font-family: "Oswald", sans-serif;
   border-radius: 100vh;
   border: 5px solid #000000;
+}*/
+@media screen and (max-width: 1340px) {
+  .logo {
+    position: none;
+    text-align: center;
+  }
 }
-
 @media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
@@ -131,60 +155,3 @@ button {
   }
 }
 </style>
-
-<script>
-import firebase from "firebase"
-
-export default {
-  data() {
-    return {
-      isLogin: false,
-      isGuest: false,
-      Loginchu: false,
-      Logoutchu: true,
-    }
-  },
-
-  methods: {
-    login() {
-      const provider = new firebase.auth.GoogleAuthProvider()
-
-      firebase
-        .auth()
-        .signInWithPopup(provider)
-        .then((result) => {
-          // @type {firebase.auth.OAuthCredential} */
-          console.log({ result })
-          if (result.user) {
-            this.isLogin = true
-            this.Loginchu = true
-            this.Logoutchu = false
-          }
-        })
-    },
-
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.isLogin = false
-          this.Logoutchu = true
-          this.Loginchu = false
-        })
-    },
-
-    Guest() {
-      firebase
-        .auth()
-        .signInAnonymously()
-        .then((result) => {
-          console.log(result)
-          this.isGuest = true
-          this.Logoutchu = false
-          this.Loginchu = true
-        })
-    },
-  },
-}
-</script>
