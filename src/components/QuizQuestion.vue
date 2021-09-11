@@ -1,11 +1,16 @@
 <template>
   <div class="lyric-quiz">
-    <h1 class="quiz-title">歌詞クイズ</h1>
-    <div class="question" v-html="newquestion.lyric.replace(/\\n/g, '<br/>')">
-      {{ newquestion.lyric }}
+    <div class="question">
+      <h1 class="quiz-title">歌詞クイズ</h1>
+      <div class="question" v-html="newquestion.lyric.replace(/\\n/g, '<br/>')">
+        {{ newquestion.lyric }}
+      </div>
     </div>
-    <input type="text" class="text-box" v-model="answer" />
-    <button v-on:click="checkanswer" class="answer-button">回答</button>
+    <div>
+      <input type="text" class="text-box" v-model="answer" />
+      <button v-on:click="checkanswer" class="answer-button">回答</button>
+    </div>
+    <button v-on:click="wrong" class="answer-button">分からない!</button>
   </div>
 </template>
 <script>
@@ -26,6 +31,9 @@ export default {
         this.$emit("my-click", 3)
       }
       this.answer = ""
+    },
+    wrong: function () {
+      this.$emit("my-click", 3)
     },
   },
 }
@@ -64,5 +72,19 @@ export default {
 }
 .answer-button:hover {
   opacity: 0.8;
+}
+.question {
+  animation-name: fadein;
+  animation-duration: 2s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div class="container">
     <h1 class="title">正解です！</h1>
+    <img src="../assets/character3.png" class="character-left" />
+    <img src="../assets/character3.png" class="character-right" />
     <div class="answer">
-      {{ newquestion.singer }}の<br />
-      {{ newquestion.title }}でした！
+      <span class="answer-title">"{{ newquestion.singer }}"</span>の<br />
+      <span class="answer-title">"{{ newquestion.title }}"</span>でした！
     </div>
     <img v-bind:src="newquestion.picture" class="picture" />
     <button v-on:click="nextQuiz" class="next-quiz">次の問題</button>
@@ -45,6 +47,24 @@ export default {
 }
 .next-quiz {
   font-family: "DotGothic16", sans-serif;
-  text-shadow: 1px 2px 2px black;
+  /* text-shadow: 1px 2px 2px black; */
+}
+.answer-title {
+  font-size: 35px;
+}
+.container {
+  position: relative;
+}
+.character-left {
+  position: absolute;
+  top: 250px;
+  left: 55px;
+  width: 25%;
+}
+.character-right {
+  position: absolute;
+  right: 55px;
+  top: 250px;
+  width: 25%;
 }
 </style>
