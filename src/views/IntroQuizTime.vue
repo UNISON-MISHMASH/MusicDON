@@ -13,6 +13,15 @@
           <p class="starttext slideInRight">
             Penalty <span>10</span> seconds per mistake
           </p>
+          <div>
+            <router-link to="/Ranking"
+              ><button>
+                <img
+                  src="../assets/runking-icon.png"
+                  class="ranking-icon"
+                /></button
+            ></router-link>
+          </div>
         </div>
         <div v-if="start">
           <h1 class="top gametitle">第{{ questionIndex + 1 }}問</h1>
@@ -60,6 +69,13 @@
             >
             <img class="answer-img" v-bind:src="questions[index].url" alt="" />
           </div>
+        </div>
+        <div>
+          <router-link to="/Ranking">
+            <button>
+              <img src="../assets/runking-icon.png" class="ranking-icon" />
+            </button>
+          </router-link>
         </div>
         <button v-on:click="reset">RESET</button>
       </div>
@@ -354,6 +370,10 @@ export default {
 .starttext span {
   color: crimson;
   font-weight: bold;
+}
+.ranking-icon {
+  width: 60%;
+  height: 60%;
 }
 .game-message {
   font-size: 40px;
