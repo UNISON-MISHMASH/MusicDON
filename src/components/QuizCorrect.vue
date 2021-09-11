@@ -26,6 +26,7 @@ export default {
   margin-top: 15px;
   margin-bottom: 10px;
   color: aqua;
+  font-family: "Kaisei Opti", serif;
 }
 .picture {
   display: block;
@@ -34,11 +35,16 @@ export default {
   width: 280px;
 }
 .title {
-  font-family: "Kaisei Opti", serif;
-  color: white;
+  font-family: "DotGothic16", sans-serif;
+  text-shadow: 1px 2px 3px green;
+  color: yellowgreen;
   padding: 30px;
 }
 .next-quiz:hover {
   opacity: 0.8;
+}
+.next-quiz {
+  font-family: "DotGothic16", sans-serif;
+  text-shadow: 1px 2px 2px black;
 }
 </style>

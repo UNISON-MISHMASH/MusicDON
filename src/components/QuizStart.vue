@@ -20,13 +20,17 @@ export default {
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Caveat&family=DotGothic16&display=swap")
-  .start: hover {
-  opacity: 0.8;
+.start {
+  font-family: "DotGothic16", sans-serif;
 }
 .title {
   color: coral;
-  font-family: "Caveat", cursive;
+  font-family: "DotGothic16", sans-serif;
+  text-shadow: 3px 3px 3px black;
   font-size: 50px;
   padding-top: 30px;
+}
+.start:hover {
+  opacity: 0.8;
 }
 </style>

@@ -20,12 +20,14 @@ export default {
 }
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Caveat&family=DotGothic16&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=DotGothic16&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap");
 .answer {
   font-size: 25px;
   margin-top: 15px;
   margin-bottom: 10px;
   color: aqua;
+  font-family: "Kaisei Opti", serif;
 }
 .picture {
   display: block;
@@ -35,11 +37,16 @@ export default {
   margin: 0, 30px;
 }
 .title {
-  font-family: "Caveat", cursive;
+  font-family: "DotGothic16", sans-serif;
   color: white;
   padding: 30px;
+  text-shadow: 2px 3px 3px black;
 }
 .next-quiz:hover {
   opacity: 0.8;
+}
+.next-quiz {
+  font-family: "DotGothic16", sans-serif;
+  text-shadow: 2px 2px 2px white;
 }
 </style>
