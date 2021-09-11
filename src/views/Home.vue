@@ -172,7 +172,8 @@ export default {
 
 .screen p {
   font-size: 70px;
-  font-family: lithos-pro, sans-serif;
+  font-family: "DotGothic16", sans-serif;
+
   font-weight: 600;
   font-style: normal;
   background: transparent;
