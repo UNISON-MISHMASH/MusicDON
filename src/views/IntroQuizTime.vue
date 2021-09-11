@@ -242,7 +242,9 @@ export default {
         }
         this.IntroScore.push({
           score: this.time,
-          name: this.$auth.currentUser.displayName,
+          name: this.$auth.currentUser.displayName
+            ? this.$auth.currentUser.displayName
+            : "黒柳徹子",
         })
         this.IntroScore.sort((a, b) => {
           return a.score - b.score
