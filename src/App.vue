@@ -118,6 +118,14 @@ export default {
   font-weight: bold;
 }
 
+button {
+  font-size: 20px;
+  margin: 5%;
+  padding: 30px 50px;
+  font-family: "Oswald", sans-serif;
+  border-radius: 100vh;
+  border: 5px solid #000000;
+}
 .Login {
   display: flex;
   justify-content: center;
@@ -128,7 +136,7 @@ export default {
   margin-bottom: 20%;
 }
 
-/*#logoutButton {
+*#logoutButton {
   color: black;
   font-size: 20px;
   margin: 5%;
@@ -137,8 +145,8 @@ export default {
   font-family: "Oswald", sans-serif;
   border-radius: 100vh;
   border: 5px solid #000000;
-}*/
-@media screen and (max-width: 1340px) {
+}
+*/ @media screen and (max-width: 1340px) {
   .logo {
     position: none;
     text-align: center;
