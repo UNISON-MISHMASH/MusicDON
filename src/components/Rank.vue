@@ -98,7 +98,9 @@ export default {
 }
 
 td {
-  font-size: 20px;
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   color: rgb(21, 254, 188);
   text-align: center;
 }
