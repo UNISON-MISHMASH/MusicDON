@@ -21,7 +21,7 @@
               @mouseout="mouseOut1"
               @click="btnsound"
             >
-              SINGLE PLAY
+              <img src="../assets/singlePlay.png" alt="" id="playButton" />
             </button>
           </router-link>
         </div>
@@ -42,9 +42,12 @@
               @mouseout="mouseOut2"
               @click="btnsound"
             >
-              PARTY PLAY
-            </button></router-link
-          >
+              <img
+                src="../assets/partyPlay.png"
+                alt=""
+                id="playButton"
+              /></button
+          ></router-link>
         </div>
       </div>
     </div>
@@ -168,7 +171,14 @@ export default {
   font-style: normal;
   background: transparent;
 }
-
+#playButton {
+  width: 40%;
+}
+button {
+  border: none; /* 枠線を消す */
+  outline: none; /* クリックしたときに表示される枠線を消す */
+  background: transparent;
+}
 .one img {
   margin-top: 50px;
   width: 250px;

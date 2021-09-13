@@ -15,7 +15,7 @@
           </p>
           <div>
             <router-link to="/Ranking"
-              ><button v-on:click="btnsound">
+              ><button v-on:click="btnsound0">
                 <img
                   src="../assets/runking-icon.png"
                   class="ranking-icon"
@@ -97,14 +97,6 @@ export default {
       endaudio: new Audio(),
       buttonaudio: new Audio(),
       questions: [
-        // {
-        //   answers: ["万華鏡", "火花", "紅蓮華", "炎"],
-        //   answer: 2,
-        //   singer: "LiSA",
-        //   sound: "紅蓮華.mp3",
-        //   url: "https://i.kfs.io/album/global/96107995,1v1/fit/500x500.jpg",
-        //   mv: "https://youtu.be/MpYy6wwqxoo",
-        // },
         {
           question: "この歌はなんでしょう",
           answers: [
@@ -119,84 +111,80 @@ export default {
           url: "https://images-fe.ssl-images-amazon.com/images/I/51inO4DBH0L._SY445_SX342_QL70_ML2_.jpg",
           mv: "https://youtu.be/JGwWNGJdvx8",
         },
-        // {
-        //   answers: [
-        //     "ブルーベリーナイツ",
-        //     "かくれんぼ",
-        //     "はしりがき",
-        //     "恋人ごっこ",
-        //   ],
-        //   answer: 2,
-        //   singer: "マカロニえんぴつ",
-        //   sound: "./はしりがき.mp3",
-        //   url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
-        //   mv: "https://youtu.be/G-fvkUwK-Wo",
-        // },
-        // {
-        //   answers: [
-        //     "月色ホライズン",
-        //     "ツキミソウ",
-        //     "はしりがき",
-        //     "ワタリドリ",
-        //   ],
-        //   answer: 3,
-        //   singer: "Alexandros",
-        //   sound: "./ワタリドリ.mp3",
-        //  url: "http://simg.mysound.jp/img/disc/036/120_UPCH-2036.jpg",
-        //   mv: "https://youtu.be/O_DLtVuiqhI",
-        // },
-        // {
-        //   answers: [
-        //     "家族になろうよ",
-        //     "桜坂",
-        //     "最愛",
-        //     "虹",
-        //   ],
-        //   answer: 1,
-        //   singer: "福山雅治",
-        //   sound: "./桜坂.mp3",
-        //   url: "https://image.entertainment-topics.jp/article/original/18122.jpg",
-        //   mv: "https://youtu.be/AGYJ6jeu3p8",
-        // },
-        // {
-        //   answers: [
-        //     "ハナミズキ",
-        //     "桜",
-        //     "ひまわり",
-        //     "遥か",
-        //   ],
-        //   answer: 0,
-        //   singer: "一青窈",
-        //   sound: "./ハナミズキ.mp3",
-        //   url: "https://images-na.ssl-images-amazon.com/images/I/61JLycqW00L._AC_SX355_.jpg",
-        //   mv: "https://youtu.be/TngUo1gDNOg",
-        // },
-        // {
-        //   answers: [
-        //     "365日",
-        //     "365日の紙飛行機",
-        //     "3月9日",
-        //     "366日",
-        //   ],
-        //   answer: 3,
-        //   singer: "HY",
-        //   sound: "./366日.mp3",
-        //   url: "https://contents.oricon.co.jp/upimg/news/20110207/84601_201102070088855001297066307c.jpg",
-        //   mv: "https://youtu.be/uA1ik3c1J1Q",
-        // },
-        // {
-        //   answers: [
-        //     "Dynamite",
-        //     "Lights",
-        //     "Butter",
-        //     "Let Go",
-        //   ],
-        //   answer: 2,
-        //   singer: "BTS",
-        //   sound: "./Butter.mp3",
-        //   url: "https://amd-pctr.c.yimg.jp/r/iwiz-amd/20210704-00010008-realsound-000-1-view.jpg",
-        //   mv: "https://youtu.be/WMweEpGlu_U",
-        // },
+        {
+          answers: [
+            "ブルーベリーナイツ",
+            "かくれんぼ",
+            "はしりがき",
+            "恋人ごっこ",
+          ],
+          answer: 2,
+          singer: "マカロニえんぴつ",
+          sound: "./はしりがき.mp3",
+          url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
+          mv: "https://youtu.be/G-fvkUwK-Wo",
+        },
+        {
+          answers: ["月色ホライズン", "ツキミソウ", "はしりがき", "ワタリドリ"],
+          answer: 3,
+          singer: "Alexandros",
+          sound: "./ワタリドリ.mp3",
+          url: "http://simg.mysound.jp/img/disc/036/120_UPCH-2036.jpg",
+          mv: "https://youtu.be/O_DLtVuiqhI",
+        },
+        {
+          answers: ["The USA", "UFO", "U.S.A.", "USA"],
+          answer: 2,
+          singer: "DA PUMP",
+          sound: "./U.S.A..mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/815E90AuAbL._AC_SL1417_.jpg",
+          mv: "https://youtu.be/sr--GVIoluU",
+        },
+        {
+          answers: ["家族になろうよ", "桜坂", "最愛", "虹"],
+          answer: 1,
+          singer: "福山雅治",
+          sound: "./桜坂.mp3",
+          url: "https://image.entertainment-topics.jp/article/original/18122.jpg",
+          mv: "https://youtu.be/AGYJ6jeu3p8",
+        },
+        {
+          answers: ["ハナミズキ", "桜", "ひまわり", "遥か"],
+          answer: 0,
+          singer: "一青窈",
+          sound: "./ハナミズキ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61JLycqW00L._AC_SX355_.jpg",
+          mv: "https://youtu.be/TngUo1gDNOg",
+        },
+        {
+          answers: ["365日", "365日の紙飛行機", "3月9日", "366日"],
+          answer: 3,
+          singer: "HY",
+          sound: "./366日.mp3",
+          url: "https://contents.oricon.co.jp/upimg/news/20110207/84601_201102070088855001297066307c.jpg",
+          mv: "https://youtu.be/uA1ik3c1J1Q",
+        },
+        {
+          answers: ["Dynamite", "Lights", "Butter", "Let Go"],
+          answer: 2,
+          singer: "BTS",
+          sound: "./Butter.mp3",
+          url: "https://amd-pctr.c.yimg.jp/r/iwiz-amd/20210704-00010008-realsound-000-1-view.jpg",
+          mv: "https://youtu.be/WMweEpGlu_U",
+        },
+        {
+          answers: [
+            "マリーゴールド",
+            "愛を伝えたいだとか",
+            "今夜このまま",
+            "裸の心",
+          ],
+          answer: 2,
+          singer: "あいみょん",
+          sound: "./今夜このまま.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/819is9URLVL._AC_SL1500_.jpg",
+          mv: "https://youtu.be/mH6LoI63buY",
+        },
 
         {
           answers: [
@@ -212,7 +200,7 @@ export default {
           mv: "https://youtu.be/O2LsN1WcABI",
         },
         {
-          answers: ["Slow & Easy", "祈り花", "女々しくて", "粉雪"],
+          answers: ["愛を伝えたいだとか", "祈り花", "女々しくて", "粉雪"],
           answer: 2,
           singer: "ゴールデンボンバー",
           sound: "./女々しくて.mp3",
@@ -239,6 +227,27 @@ export default {
           sound: "./Make you happy.mp3",
           url: "https://images-fe.ssl-images-amazon.com/images/I/51tKcC7n1bL._SY445_SX342_QL70_ML2_.jpg",
           mv: "https://youtu.be/QW28YKqdxe0",
+        },
+        {
+          answers: ["勿忘", "かくれんぼ", "別れ", "ドライフラワー"],
+          answer: 0,
+          singer: "Awesome City Club",
+          sound: "./勿忘.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/51yBSgpPA1L._AC_.jpg",
+          mv: "https://youtu.be/zkZARKFuzNQ",
+        },
+        {
+          answers: [
+            "We are",
+            "Wasted Nights",
+            "Stand Out Fit In",
+            "The Beginning",
+          ],
+          answer: 1,
+          singer: "ONE OK ROCK",
+          sound: "./WastedNights.mp3",
+          url: "https://m.media-amazon.com/images/I/81ycP5Vn34L._SS500_.jpg",
+          mv: "https://youtu.be/b4YLo74OWfY",
         },
       ],
       gameaudio: {
@@ -273,16 +282,17 @@ export default {
           })
         })
       })
-    // const shuffle = ([...array]) => {
-    //   for (let i = array.length - 1; i >= 0; i--) {
-    //     const j = Math.floor(Math.random() * (i + 1))
-    //     const temp = array[i]
-    //     array[i] = array[j]
-    //     array[j] = temp
-    //   }
-    //   return array
-    // }
-    // this.questions = shuffle(this.questions)
+    const shuffle = ([...array]) => {
+      for (let i = array.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        const temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+      }
+      return array
+    }
+    this.questions = shuffle(this.questions)
+    this.questions = this.questions.slice(10)
 
     for (let j = 0; j < this.questions.length; j++) {
       this.answer[j] = this.questions[j].answer
@@ -318,21 +328,21 @@ export default {
 
         this.time = Number(this.missCount) * 10 + Number(this.second)
         if (this.second < 30) {
-          this.starMaker(50)
+          this.onpuMaker(50)
           // this.endaudio.src = this.gameaudio.end
           // this.endaudio.play()
         } else if (this.second < 40) {
-          this.starMaker(30)
+          this.onpuMaker(30)
         } else if (this.second < 60) {
-          this.starMaker(10)
+          this.onpuMaker(10)
         } else {
-          this.starMaker(0)
+          this.onpuMaker(0)
         }
         this.IntroScore.push({
           score: this.time,
           name: this.$auth.currentUser.displayName
             ? this.$auth.currentUser.displayName
-            : "黒柳徹子",
+            : "Guest",
         })
         this.IntroScore.sort((a, b) => {
           return a.score - b.score
@@ -360,31 +370,35 @@ export default {
       this.totalTime = ((this.fTime - this.sTime) / 1000).toFixed(2)
       this.second = this.totalTime
     },
+    btnsound0: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
+    },
     btnsound: function () {
       this.buttonaudio.src = this.gameaudio.end
       this.buttonaudio.play()
     },
-    starMaker(n) {
+    onpuMaker(n) {
       var star = document.createElement("div")
       star.className = "star"
       star.textContent = "♬"
       for (var i = 0; i < n; i++) {
-        this.starSet(star)
+        this.onpuSet(star)
       }
     },
 
-    starSet(clone) {
-      var starClone = clone.cloneNode(true)
-      var starStyle = starClone.style
+    onpuSet(clone) {
+      var onpuClone = clone.cloneNode(true)
+      var onpuStyle = onpuClone.style
 
       //音符の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
-      starStyle.left = 100 * Math.random() + "%"
-      starStyle.animationDelay = 8 * Math.random() + "s"
-      starStyle.fontSize = ~~(50 * Math.random() + 20) + "px"
-      document.body.appendChild(starClone)
+      onpuStyle.left = 100 * Math.random() + "%"
+      onpuStyle.animationDelay = 8 * Math.random() + "s"
+      onpuStyle.fontSize = ~~(50 * Math.random() + 20) + "px"
+      document.body.appendChild(onpuClone)
 
       //音符一つのアニメーションが終わったら新しい音符を生成
-      starClone.addEventListener(
+      onpuClone.addEventListener(
         "animationend",
         function () {
           this.parentNode.removeChild(this)
