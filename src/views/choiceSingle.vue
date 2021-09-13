@@ -5,13 +5,13 @@
     </div>
     <div class="button">
       <router-link to="/introQuizTime"
-        ><img src="../assets/choice-button-time.png" alt="" />
+        ><img src="../assets/choice-button-time.png" alt="" @click="btnsound" />
       </router-link>
       <router-link to="/introquiz">
-        <img src="../assets/choice-button-In.png" alt="" />
+        <img src="../assets/choice-button-In.png" alt="" @click="btnsound" />
       </router-link>
       <router-link to="/lyricsQuiz"
-        ><img src="../assets/choice-button-Ly.png" alt=""
+        ><img src="../assets/choice-button-Ly.png" alt="" @click="btnsound"
       /></router-link>
     </div>
     <div class="comment">
@@ -24,6 +24,18 @@
 <script>
 export default {
   name: "ChoiceSingle",
+  data() {
+    return {
+      buttonaudio: new Audio(),
+      gameaudio: { button: "./決定.mp3" },
+    }
+  },
+  methods: {
+    btnsound: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
+    },
+  },
 }
 </script>
 <style scoped>

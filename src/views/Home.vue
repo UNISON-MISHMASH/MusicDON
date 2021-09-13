@@ -16,7 +16,11 @@
         </div>
         <div class="play-button">
           <router-link to="/ChoiceSingle">
-            <button @mouseover="mouseOver1" @mouseout="mouseOut1">
+            <button
+              @mouseover="mouseOver1"
+              @mouseout="mouseOut1"
+              @click="btnsound"
+            >
               SINGLE PLAY
             </button>
           </router-link>
@@ -33,7 +37,11 @@
         </div>
         <div class="play-button">
           <router-link to="/ChoiceParty">
-            <button @mouseover="mouseOver2" @mouseout="mouseOut2">
+            <button
+              @mouseover="mouseOver2"
+              @mouseout="mouseOut2"
+              @click="btnsound"
+            >
               PARTY PLAY
             </button></router-link
           >
@@ -45,7 +53,7 @@
       <p id="title1">NEWS</p>
       <div>
         <hooper :settings="hooperSettings">
-          <slide> <Rank /></slide>
+          <!-- <slide> <Rank /></slide> -->
           <slide> <img src="../assets/slide-intro.png" /><br /> </slide>
           <slide> <img src="../assets/slide-lyrics.png" /></slide>
           <slide> <img src="../assets/slide-time.png" /></slide>
@@ -59,7 +67,7 @@
 // @ is an alias to /src
 import { Hooper, Slide } from "hooper"
 import "hooper/dist/hooper.css"
-import Rank from "@/components/Rank.vue"
+// import Rank from "@/components/Rank.vue"
 
 export default {
   name: "Home",
@@ -67,7 +75,8 @@ export default {
     return {
       image1: require("@/assets/singer-don.png"),
       image2: require("@/assets/dj-don.png"),
-
+      buttonaudio: new Audio(),
+      gameaudio: { button: "./決定.mp3" },
       hooperSettings: {
         autoPlay: true,
         playSpeed: "4000",
@@ -90,11 +99,15 @@ export default {
     mouseOut2: function () {
       this.image2 = require("@/assets/dj-don.png")
     },
+    btnsound: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
+    },
   },
   components: {
     Hooper,
     Slide,
-    Rank,
+    // Rank,
   },
 
   computed: {
@@ -148,12 +161,12 @@ export default {
   font-size: 30px;
   margin-top: 20px;
   color: black;
-  border: none;
+  /* border: none; */
   padding: 30px;
   font-family: "DotGothic16", sans-serif;
   font-weight: 600;
   font-style: normal;
-  background: transparent;
+  /* background: transparent; */
 }
 
 .one img {

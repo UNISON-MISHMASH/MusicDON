@@ -146,7 +146,8 @@ button {
   border-radius: 100vh;
   border: 5px solid #000000;
 }
-*/ @media screen and (max-width: 1340px) {
+
+@media screen and (max-width: 1340px) {
   .logo {
     position: none;
     text-align: center;

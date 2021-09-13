@@ -75,29 +75,87 @@ export default {
       startName: "Press the button to start!!",
       buttonName: "Music Start!!",
       audio: new Audio(),
+      buttonaudio: new Audio(),
       audioEle: [
+        // {
+        //   title: "Shape of You",
+        //   singer: "Ed Sheeran",
+        //   sound: "./Shape of You.mp3",
+        //   url: "https://images-fe.ssl-images-amazon.com/images/I/51inO4DBH0L._SY445_SX342_QL70_ML2_.jpg",
+        //   mv: "https://youtu.be/JGwWNGJdvx8",
+        // },
+        // {
+        //   title: "はしりがき",
+        //   singer: "マカロニエンピツ",
+        //   sound: "./はしりがき.mp3",
+        //   url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
+        //   mv: "https://youtu.be/G-fvkUwK-Wo",
+        // },
+        // {
+        //   title: "Slow & Easy",
+        //   singer: "平井大",
+        //   sound: "./SlowEasy.mp3",
+        //   url: "https://images-na.ssl-images-amazon.com/images/I/51S9KQubcdL._AC_SY450_.jpg",
+        //   mv: "https://youtu.be/1mz-A--mANU",
+        // },
         {
-          title: "Shape of You",
-          singer: "Ed Sheeran",
-          sound: "./Shape of You.mp3",
-          url: "https://images-fe.ssl-images-amazon.com/images/I/51inO4DBH0L._SY445_SX342_QL70_ML2_.jpg",
-          mv: "https://youtu.be/JGwWNGJdvx8",
+          title: "女々しくて",
+          singer: "ゴールデンボンバー",
+          sound: "./女々しくて.mp3",
+          url: "https://hominis.media/2019/07/images/GOLDENBOMBER.jpg",
+          mv: "https://youtu.be/BC9P3DSZu0A",
         },
-        {
-          title: "はしりがき",
-          singer: "マカロニエンピツ",
-          sound: "./はしりがき.mp3",
-          url: "https://img.hmv.co.jp/image/jacket/400/0000116/6/3/745.jpg",
-          mv: "https://youtu.be/G-fvkUwK-Wo",
-        },
-        {
-          title: "Slow & Easy",
-          singer: "平井大",
-          sound: "./SlowEasy.mp3",
-          url: "https://images-na.ssl-images-amazon.com/images/I/51S9KQubcdL._AC_SY450_.jpg",
-          mv: "https://youtu.be/1mz-A--mANU",
-        },
+        // {
+        //   title: "Butter",
+        //   singer: "BTS",
+        //   sound: "./Butter.mp3",
+        //   url: "https://amd-pctr.c.yimg.jp/r/iwiz-amd/20210704-00010008-realsound-000-1-view.jpg",
+        //   mv: "https://youtu.be/WMweEpGlu_U",
+        // },
+        // {
+        //   title: "桜坂",
+        //   singer: "福山雅治",
+        //   sound: "./桜坂.mp3",
+        //   url: "https://image.entertainment-topics.jp/article/original/18122.jpg",
+        //   mv: "https://youtu.be/AGYJ6jeu3p8",
+        // },
+        // {
+        //   title: "ワタリドリ",
+        //   singer: "Alesandros",
+        //   sound: "./ワタリドリ.mp3",
+        //   url: "http://simg.mysound.jp/img/disc/036/120_UPCH-2036.jpg",
+        //   mv: "https://youtu.be/O_DLtVuiqhI",
+        // },
+        // {
+        //   title: "366日",
+        //   singer: "HY",
+        //   sound: "./366日.mp3",
+        //   url: "https://contents.oricon.co.jp/upimg/news/20110207/84601_201102070088855001297066307c.jpg",
+        //   mv: "https://youtu.be/uA1ik3c1J1Q",
+        // },
+        // {
+        //   title: "U.S.A.",
+        //   singer: "DA PUMP",
+        //   sound: "./U.S.A..mp3",
+        //   url: "https://images-na.ssl-images-amazon.com/images/I/815E90AuAbL._AC_SL1417_.jpg",
+        //   mv: "https://youtu.be/sr--GVIoluU",
+        // },
+        // {
+        //   title: "ハナミズキ",
+        //   singer: "一青窈",
+        //   sound: "./ハナミズキ.mp3",
+        //   url: "https://images-na.ssl-images-amazon.com/images/I/61JLycqW00L._AC_SX355_.jpg",
+        //   mv: "https://youtu.be/TngUo1gDNOg",
+        // },
+        // {
+        //   title: "全力少年",
+        //   singer: "スキマスイッチ",
+        //   sound: "./全力少年.mp3",
+        //   url: "https://images-na.ssl-images-amazon.com/images/I/61NSjnNSyjL._AC_.jpg",
+        //   mv: "https://youtu.be/IvDTkTKi5pA",
+        // },
       ],
+      gameaudio: { button: "./決定.mp3" },
       correct: "",
       incorrect: "",
       songtitle: "",
@@ -123,6 +181,8 @@ export default {
   },
   methods: {
     getContents: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
       this.start = false
       this.buttonCount++
       this.song_img = true

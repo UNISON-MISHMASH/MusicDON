@@ -16,7 +16,7 @@
     </div>
     <div>
       <router-link to="/introQuizTime"
-        ><button>TimeAttack!!</button></router-link
+        ><button v-on:click="btnsound">TimeAttack!!</button></router-link
       >
     </div>
   </div>
@@ -28,6 +28,7 @@ export default {
   name: "Ranking",
   data() {
     return {
+      buttonaudio: new Audio(),
       intro: [
         {
           number: "🥇1位🥇",
@@ -56,6 +57,7 @@ export default {
         },
       ],
       IntroScore: [],
+      gameaudio: { button: "./決定.mp3" },
     }
   },
 
@@ -76,6 +78,12 @@ export default {
           this.intro[i].human = this.IntroScore[i].name
         }
       })
+  },
+  methods: {
+    btnsound: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
+    },
   },
 }
 </script>
