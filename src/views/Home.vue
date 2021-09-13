@@ -17,7 +17,7 @@
         <div class="play-button">
           <router-link to="/ChoiceSingle">
             <button @mouseover="mouseOver1" @mouseout="mouseOut1">
-              SINGLE PLAY
+              <img src="../assets/singlePlay.png" alt="" id="playButton" />
             </button>
           </router-link>
         </div>
@@ -34,9 +34,12 @@
         <div class="play-button">
           <router-link to="/ChoiceParty">
             <button @mouseover="mouseOver2" @mouseout="mouseOut2">
-              PARTY PLAY
-            </button></router-link
-          >
+              <img
+                src="../assets/partyPlay.png"
+                alt=""
+                id="playButton"
+              /></button
+          ></router-link>
         </div>
       </div>
     </div>
@@ -144,7 +147,7 @@ export default {
   align-items: flex-end;
 }
 
-.play-mode button {
+/*.play-mode button {
   font-size: 30px;
   margin-top: 20px;
   color: black;
@@ -154,8 +157,15 @@ export default {
   font-weight: 600;
   font-style: normal;
   background: transparent;
+}*/
+#playButton {
+  width: 40%;
 }
-
+button {
+  border: none; /* 枠線を消す */
+  outline: none; /* クリックしたときに表示される枠線を消す */
+  background: transparent;
+}
 .one img {
   margin-top: 50px;
   width: 250px;
