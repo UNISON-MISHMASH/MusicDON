@@ -161,12 +161,12 @@ export default {
   font-size: 30px;
   margin-top: 20px;
   color: black;
-  /* border: none; */
+  border: none;
   padding: 30px;
   font-family: "DotGothic16", sans-serif;
   font-weight: 600;
   font-style: normal;
-  /* background: transparent; */
+  background: transparent;
 }
 
 .one img {
