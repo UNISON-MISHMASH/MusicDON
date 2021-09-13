@@ -57,9 +57,18 @@
       <div>
         <hooper :settings="hooperSettings">
           <slide> <Rank /></slide>
-          <slide> <img src="../assets/slide-intro.png" /><br /> </slide>
-          <slide> <img src="../assets/slide-lyrics.png" /></slide>
-          <slide> <img src="../assets/slide-time.png" /></slide>
+          <slide>
+            <router-link to="/introQuiz"
+              ><img src="../assets/slide-intro.png" /></router-link
+          ></slide>
+          <slide>
+            <router-link to="/lyricsQuiz"
+              ><img src="../assets/slide-lyrics.png" /></router-link
+          ></slide>
+          <slide>
+            <router-link to="/introQuizTime"
+              ><img src="../assets/slide-time.png" /></router-link
+          ></slide>
         </hooper>
       </div>
     </div>
