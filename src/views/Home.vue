@@ -53,7 +53,7 @@
       <p id="title1">NEWS</p>
       <div>
         <hooper :settings="hooperSettings">
-          <!-- <slide> <Rank /></slide> -->
+          <slide> <Rank /></slide>
           <slide> <img src="../assets/slide-intro.png" /><br /> </slide>
           <slide> <img src="../assets/slide-lyrics.png" /></slide>
           <slide> <img src="../assets/slide-time.png" /></slide>
@@ -67,7 +67,7 @@
 // @ is an alias to /src
 import { Hooper, Slide } from "hooper"
 import "hooper/dist/hooper.css"
-// import Rank from "@/components/Rank.vue"
+import Rank from "@/components/Rank.vue"
 
 export default {
   name: "Home",
@@ -107,7 +107,7 @@ export default {
   components: {
     Hooper,
     Slide,
-    // Rank,
+    Rank,
   },
 
   computed: {
