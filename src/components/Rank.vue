@@ -86,7 +86,12 @@ td {
 
 @media screen and (max-width: 1500px) {
   #app {
-    background-image: url("../assets/slide-rank-M.png");
+    background-image: url("../assets/slideRanking.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .main {
+    display: none;
   }
 }
 </style>
