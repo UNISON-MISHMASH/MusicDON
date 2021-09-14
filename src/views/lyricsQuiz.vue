@@ -61,22 +61,6 @@ export default {
     QuizCorrect,
     QuizWrong,
   },
-  // created() {
-  // for (let i = this.questions.length - 1; i >= 0; i--) {
-  //   const j = Math.floor(Math.random() * (i + 1))
-  //   const tmp = this.questions[i]
-  //   this.questions[i] = this.questions[j]
-  //   this.questions[j] = tmp
-  //   firebase
-  //     .firestore()
-  //     .collection("lyricsQuiz")
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.forEach((doc) => {
-  //         this.questions.push(doc.data())
-  //       })
-  //     })
-  // }
   created() {
     firebase
       .firestore()

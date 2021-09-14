@@ -49,7 +49,7 @@ export default {
 }
 .answer-wrong {
   animation-name: fadein;
-  animation-duration: 2s;
+  animation-duration: 2.5s;
 }
 @keyframes fadein {
   from {
