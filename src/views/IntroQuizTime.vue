@@ -13,6 +13,15 @@
           <p class="starttext slideInRight">
             Penalty <span>10</span> seconds per mistake
           </p>
+          <div>
+            <router-link to="/Ranking"
+              ><button v-on:click="btnsound0">
+                <img
+                  src="../assets/runking-icon.png"
+                  class="ranking-icon"
+                /></button
+            ></router-link>
+          </div>
         </div>
         <div v-if="start">
           <h1 class="top gametitle">第{{ questionIndex + 1 }}問</h1>
@@ -61,6 +70,13 @@
             <img class="answer-img" v-bind:src="questions[index].url" alt="" />
           </div>
         </div>
+        <div>
+          <router-link to="/Ranking">
+            <button v-on:click="btnsound">
+              <img src="../assets/runking-icon.png" class="ranking-icon" />
+            </button>
+          </router-link>
+        </div>
         <button v-on:click="reset">RESET</button>
       </div>
     </div>
@@ -79,6 +95,7 @@ export default {
       answer: [],
       audio: new Audio(),
       endaudio: new Audio(),
+      buttonaudio: new Audio(),
       questions: [
         {
           question: "この歌はなんでしょう",
@@ -108,6 +125,68 @@ export default {
           mv: "https://youtu.be/G-fvkUwK-Wo",
         },
         {
+          answers: ["月色ホライズン", "ツキミソウ", "はしりがき", "ワタリドリ"],
+          answer: 3,
+          singer: "Alexandros",
+          sound: "./ワタリドリ.mp3",
+          url: "http://simg.mysound.jp/img/disc/036/120_UPCH-2036.jpg",
+          mv: "https://youtu.be/O_DLtVuiqhI",
+        },
+        {
+          answers: ["The USA", "UFO", "U.S.A.", "USA"],
+          answer: 2,
+          singer: "DA PUMP",
+          sound: "./U.S.A..mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/815E90AuAbL._AC_SL1417_.jpg",
+          mv: "https://youtu.be/sr--GVIoluU",
+        },
+        {
+          answers: ["家族になろうよ", "桜坂", "最愛", "虹"],
+          answer: 1,
+          singer: "福山雅治",
+          sound: "./桜坂.mp3",
+          url: "https://image.entertainment-topics.jp/article/original/18122.jpg",
+          mv: "https://youtu.be/AGYJ6jeu3p8",
+        },
+        {
+          answers: ["ハナミズキ", "桜", "ひまわり", "遥か"],
+          answer: 0,
+          singer: "一青窈",
+          sound: "./ハナミズキ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61JLycqW00L._AC_SX355_.jpg",
+          mv: "https://youtu.be/TngUo1gDNOg",
+        },
+        {
+          answers: ["365日", "365日の紙飛行機", "3月9日", "366日"],
+          answer: 3,
+          singer: "HY",
+          sound: "./366日.mp3",
+          url: "https://contents.oricon.co.jp/upimg/news/20110207/84601_201102070088855001297066307c.jpg",
+          mv: "https://youtu.be/uA1ik3c1J1Q",
+        },
+        {
+          answers: ["Dynamite", "Lights", "Butter", "Let Go"],
+          answer: 2,
+          singer: "BTS",
+          sound: "./Butter.mp3",
+          url: "https://amd-pctr.c.yimg.jp/r/iwiz-amd/20210704-00010008-realsound-000-1-view.jpg",
+          mv: "https://youtu.be/WMweEpGlu_U",
+        },
+        {
+          answers: [
+            "マリーゴールド",
+            "愛を伝えたいだとか",
+            "今夜このまま",
+            "裸の心",
+          ],
+          answer: 2,
+          singer: "あいみょん",
+          sound: "./今夜このまま.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/819is9URLVL._AC_SL1500_.jpg",
+          mv: "https://youtu.be/mH6LoI63buY",
+        },
+
+        {
           answers: [
             "Slow & Easy",
             "祈り花",
@@ -121,12 +200,20 @@ export default {
           mv: "https://youtu.be/O2LsN1WcABI",
         },
         {
-          answers: ["Slow & Easy", "祈り花", "女々しくて", "粉雪"],
+          answers: ["愛を伝えたいだとか", "祈り花", "女々しくて", "粉雪"],
           answer: 2,
           singer: "ゴールデンボンバー",
           sound: "./女々しくて.mp3",
           url: "https://hominis.media/2019/07/images/GOLDENBOMBER.jpg",
           mv: "https://youtu.be/BC9P3DSZu0A",
+        },
+        {
+          answers: ["万華鏡", "火花", "紅蓮華", "炎"],
+          answer: 2,
+          singer: "LiSA",
+          sound: "紅蓮華.mp3",
+          url: "https://i.kfs.io/album/global/96107995,1v1/fit/500x500.jpg",
+          mv: "https://youtu.be/MpYy6wwqxoo",
         },
         {
           answers: [
@@ -141,8 +228,83 @@ export default {
           url: "https://images-fe.ssl-images-amazon.com/images/I/51tKcC7n1bL._SY445_SX342_QL70_ML2_.jpg",
           mv: "https://youtu.be/QW28YKqdxe0",
         },
+        {
+          answers: ["勿忘", "かくれんぼ", "別れ", "ドライフラワー"],
+          answer: 0,
+          singer: "Awesome City Club",
+          sound: "./勿忘.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/51yBSgpPA1L._AC_.jpg",
+          mv: "https://youtu.be/zkZARKFuzNQ",
+        },
+        {
+          answers: [
+            "We are",
+            "Wasted Nights",
+            "Stand Out Fit In",
+            "The Beginning",
+          ],
+          answer: 1,
+          singer: "ONE OK ROCK",
+          sound: "./WastedNights.mp3",
+          url: "https://m.media-amazon.com/images/I/81ycP5Vn34L._SS500_.jpg",
+          mv: "https://youtu.be/b4YLo74OWfY",
+        },
+        {
+          answers: ["Lovers Again", "Ti Amo", "ただ逢いたくて", "道"],
+          answer: 0,
+          singer: "EXILE",
+          sound: "./Lovers Again.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/71b7oFyXz4L._AC_SL1091_.jpg",
+          mv: "https://youtu.be/PUdrCJSly_A",
+        },
+        {
+          answers: [
+            "サヨナラの意味",
+            "帰り道は遠回りをしたくなる",
+            "シンクロニシティ",
+            "逃げ水",
+          ],
+          answer: 2,
+          singer: "乃木坂46",
+          sound: "./シンクロニシティ.mp3",
+          url: "https://m.media-amazon.com/images/I/81OpmuY0R1L._SS500_.jpg",
+          mv: "https://youtu.be/f0wbnQw89J0",
+        },
+        {
+          answers: ["夜空", "Don't cry anymore", "片想い", "ヒカリへ"],
+          answer: 3,
+          singer: "miwa",
+          sound: "./ヒカリへ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61CfwEm1lgL._AC_SX425_.jpg",
+          mv: "https://youtu.be/aRyjZa89g4o",
+        },
+        {
+          answers: ["Sparkle", "君の名は", "前前前世", "点描の唄"],
+          answer: 0,
+          singer: "RADWIMPS",
+          sound: "./Sparkle.mp3",
+          url: "https://i1.sndcdn.com/artworks-000533563956-xnhu01-t500x500.jpg",
+          mv: "https://youtu.be/tpH8TEkKQI4",
+        },
+        {
+          answers: [
+            "世田谷ラブストーリー",
+            "クリスマスソング",
+            "高嶺の花子さん",
+            "ハッピーエンド",
+          ],
+          answer: 1,
+          singer: "back number",
+          sound: "./クリスマスソング.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/616ZobZ2Z7L._AC_SY355_.jpg",
+          mv: "https://youtu.be/7zBeQezaz4U",
+        },
       ],
-      gameaudio: [{ end: "./kansei.mp3" }],
+      gameaudio: {
+        end: "./kansei.mp3",
+        button: "./決定.mp3",
+        ranksound: "./ファンファーレ4.mp3",
+      },
 
       start: false,
       time: 0,
@@ -152,6 +314,10 @@ export default {
       missCount: 0,
       IntroScore: [],
     }
+  },
+  beforeDestroy() {
+    this.audio.pause()
+    this.audio.currentTime = 0
   },
   created() {
     firebase
@@ -176,6 +342,7 @@ export default {
       return array
     }
     this.questions = shuffle(this.questions)
+    this.questions = this.questions.slice(15)
 
     for (let j = 0; j < this.questions.length; j++) {
       this.answer[j] = this.questions[j].answer
@@ -190,6 +357,7 @@ export default {
         if (this.questionNow) {
           this.audio.src = this.questions[this.questionIndex].sound
           this.audio.play()
+          this.audio.loop = true
         } else {
           this.audio.pause()
           this.audio.currentTime = 0
@@ -197,8 +365,9 @@ export default {
       } else {
         this.start = false
         this.audio.pause()
-        // this.endaudio.src = this.gameaudio.end
-        // this.endaudio.play()
+        this.audio.currentTime = 0
+        this.endaudio.src = this.gameaudio.ranksound
+        this.endaudio.play()
         this.fTime = performance.now()
         this.result()
 
@@ -210,19 +379,21 @@ export default {
 
         this.time = Number(this.missCount) * 10 + Number(this.second)
         if (this.second < 30) {
-          this.starMaker(50)
+          this.onpuMaker(50)
           // this.endaudio.src = this.gameaudio.end
           // this.endaudio.play()
         } else if (this.second < 40) {
-          this.starMaker(30)
+          this.onpuMaker(30)
         } else if (this.second < 60) {
-          this.starMaker(10)
+          this.onpuMaker(10)
         } else {
-          this.starMaker(0)
+          this.onpuMaker(0)
         }
         this.IntroScore.push({
           score: this.time,
-          name: this.$auth.currentUser.displayName,
+          name: this.$auth.currentUser.displayName
+            ? this.$auth.currentUser.displayName
+            : "Guest",
         })
         this.IntroScore.sort((a, b) => {
           return a.score - b.score
@@ -239,6 +410,8 @@ export default {
       // link.href = this.questions[this.questionIndex].mv
     },
     getContent: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
       this.start = true
       this.sTime = performance.now()
       this.audio.src = this.questions[this.questionIndex].sound
@@ -248,27 +421,35 @@ export default {
       this.totalTime = ((this.fTime - this.sTime) / 1000).toFixed(2)
       this.second = this.totalTime
     },
-    starMaker(n) {
+    btnsound0: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
+    },
+    btnsound: function () {
+      this.buttonaudio.src = this.gameaudio.end
+      this.buttonaudio.play()
+    },
+    onpuMaker(n) {
       var star = document.createElement("div")
       star.className = "star"
       star.textContent = "♬"
       for (var i = 0; i < n; i++) {
-        this.starSet(star)
+        this.onpuSet(star)
       }
     },
 
-    starSet(clone) {
-      var starClone = clone.cloneNode(true)
-      var starStyle = starClone.style
+    onpuSet(clone) {
+      var onpuClone = clone.cloneNode(true)
+      var onpuStyle = onpuClone.style
 
       //音符の位置（left）、アニメーションの遅延時間（animation-delay）、サイズ（font-size）をランダムで指定
-      starStyle.left = 100 * Math.random() + "%"
-      starStyle.animationDelay = 8 * Math.random() + "s"
-      starStyle.fontSize = ~~(50 * Math.random() + 20) + "px"
-      document.body.appendChild(starClone)
+      onpuStyle.left = 100 * Math.random() + "%"
+      onpuStyle.animationDelay = 8 * Math.random() + "s"
+      onpuStyle.fontSize = ~~(50 * Math.random() + 20) + "px"
+      document.body.appendChild(onpuClone)
 
       //音符一つのアニメーションが終わったら新しい音符を生成
-      starClone.addEventListener(
+      onpuClone.addEventListener(
         "animationend",
         function () {
           this.parentNode.removeChild(this)
@@ -351,6 +532,10 @@ export default {
   color: crimson;
   font-weight: bold;
 }
+.ranking-icon {
+  width: 60%;
+  height: 60%;
+}
 .game-message {
   font-size: 40px;
   color: greenyellow;
@@ -359,14 +544,14 @@ export default {
 }
 .flex {
   display: flex;
-  width: 100%;
+  width: 90%;
 }
 .flex button {
   font-family: "Viaoda Libre", cursive;
   background-color: greenyellow;
   color: black;
   font-size: 20px;
-  size: 50px;
+  size: 30px;
 }
 
 button:hover {
@@ -417,6 +602,14 @@ img {
   }
   100% {
     transform: translateY(calc(100vh + 1em)) rotateY(3600deg);
+  }
+}
+@media (max-width: 700px) {
+  .flex {
+    flex-direction: column;
+  }
+  .flex button + button {
+    margin-top: 30px;
   }
 }
 </style>

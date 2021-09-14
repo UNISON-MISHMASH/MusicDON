@@ -11,10 +11,14 @@ export default {
   data() {
     return {
       value: 1,
+      buttonaudio: new Audio(),
+      gameaudio: { button: "./決定.mp3" },
     }
   },
   methods: {
     nextQuiz() {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
       this.$emit("my-click", 1)
     },
   },

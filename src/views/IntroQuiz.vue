@@ -75,6 +75,7 @@ export default {
       startName: "Press the button to start!!",
       buttonName: "Music Start!!",
       audio: new Audio(),
+      buttonaudio: new Audio(),
       audioEle: [
         {
           title: "Shape of You",
@@ -97,7 +98,120 @@ export default {
           url: "https://images-na.ssl-images-amazon.com/images/I/51S9KQubcdL._AC_SY450_.jpg",
           mv: "https://youtu.be/1mz-A--mANU",
         },
+        {
+          title: "女々しくて",
+          singer: "ゴールデンボンバー",
+          sound: "./女々しくて.mp3",
+          url: "https://hominis.media/2019/07/images/GOLDENBOMBER.jpg",
+          mv: "https://youtu.be/BC9P3DSZu0A",
+        },
+        {
+          title: "Butter",
+          singer: "BTS",
+          sound: "./Butter.mp3",
+          url: "https://amd-pctr.c.yimg.jp/r/iwiz-amd/20210704-00010008-realsound-000-1-view.jpg",
+          mv: "https://youtu.be/WMweEpGlu_U",
+        },
+        {
+          title: "桜坂",
+          singer: "福山雅治",
+          sound: "./桜坂.mp3",
+          url: "https://image.entertainment-topics.jp/article/original/18122.jpg",
+          mv: "https://youtu.be/AGYJ6jeu3p8",
+        },
+        {
+          title: "ワタリドリ",
+          singer: "Alesandros",
+          sound: "./ワタリドリ.mp3",
+          url: "http://simg.mysound.jp/img/disc/036/120_UPCH-2036.jpg",
+          mv: "https://youtu.be/O_DLtVuiqhI",
+        },
+        {
+          title: "366日",
+          singer: "HY",
+          sound: "./366日.mp3",
+          url: "https://contents.oricon.co.jp/upimg/news/20110207/84601_201102070088855001297066307c.jpg",
+          mv: "https://youtu.be/uA1ik3c1J1Q",
+        },
+        {
+          title: "U.S.A.",
+          singer: "DA PUMP",
+          sound: "./U.S.A..mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/815E90AuAbL._AC_SL1417_.jpg",
+          mv: "https://youtu.be/sr--GVIoluU",
+        },
+        {
+          title: "ハナミズキ",
+          singer: "一青窈",
+          sound: "./ハナミズキ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61JLycqW00L._AC_SX355_.jpg",
+          mv: "https://youtu.be/TngUo1gDNOg",
+        },
+        {
+          title: "全力少年",
+          singer: "スキマスイッチ",
+          sound: "./全力少年.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61NSjnNSyjL._AC_.jpg",
+          mv: "https://youtu.be/IvDTkTKi5pA",
+        },
+        {
+          title: "今夜このまま",
+          singer: "あいみょん",
+          sound: "./今夜このまま.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/819is9URLVL._AC_SL1500_.jpg",
+          mv: "https://youtu.be/mH6LoI63buY",
+        },
+        {
+          title: "勿忘",
+          singer: "Awesome City Club",
+          sound: "./勿忘.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/51yBSgpPA1L._AC_.jpg",
+          mv: "https://youtu.be/zkZARKFuzNQ",
+        },
+        {
+          title: "Wasted Nights",
+          singer: "ONE OK ROCK",
+          sound: "./WastedNights.mp3",
+          url: "https://m.media-amazon.com/images/I/81ycP5Vn34L._SS500_.jpg",
+          mv: "https://youtu.be/b4YLo74OWfY",
+        },
+        {
+          title: "Lovers Again",
+          singer: "EXILE",
+          sound: "./Lovers Again.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/71b7oFyXz4L._AC_SL1091_.jpg",
+          mv: "https://youtu.be/PUdrCJSly_A",
+        },
+        {
+          title: "シンクロニシティ",
+          singer: "乃木坂46",
+          sound: "./シンクロニシティ.mp3",
+          url: "https://m.media-amazon.com/images/I/81OpmuY0R1L._SS500_.jpg",
+          mv: "https://youtu.be/f0wbnQw89J0",
+        },
+        {
+          title: "ヒカリへ",
+          singer: "miwa",
+          sound: "./ヒカリへ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61CfwEm1lgL._AC_SX425_.jpg",
+          mv: "https://youtu.be/aRyjZa89g4o",
+        },
+        {
+          title: "Sparkle",
+          singer: "RADWIMPS",
+          sound: "./Sparkle.mp3",
+          url: "https://i1.sndcdn.com/artworks-000533563956-xnhu01-t500x500.jpg",
+          mv: "https://youtu.be/tpH8TEkKQI4",
+        },
+        {
+          title: "クリスマスソング",
+          singer: "back number",
+          sound: "./クリスマスソング.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/616ZobZ2Z7L._AC_SY355_.jpg",
+          mv: "https://youtu.be/7zBeQezaz4U",
+        },
       ],
+      gameaudio: { button: "./決定.mp3" },
       correct: "",
       incorrect: "",
       songtitle: "",
@@ -117,8 +231,14 @@ export default {
   //   this.audio.pause()
   //   this.audio.currentTime = 0
   // },
+  beforeDestroy() {
+    this.audio.pause()
+    this.audio.currentTime = 0
+  },
   methods: {
     getContents: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
       this.start = false
       this.buttonCount++
       this.song_img = true

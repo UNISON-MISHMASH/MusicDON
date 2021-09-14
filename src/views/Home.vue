@@ -16,7 +16,11 @@
         </div>
         <div class="play-button">
           <router-link to="/ChoiceSingle">
-            <button @mouseover="mouseOver1" @mouseout="mouseOut1">
+            <button
+              @mouseover="mouseOver1"
+              @mouseout="mouseOut1"
+              @click="btnsound"
+            >
               <img src="../assets/singlePlay.png" alt="" id="playButton" />
             </button>
           </router-link>
@@ -33,7 +37,11 @@
         </div>
         <div class="play-button">
           <router-link to="/ChoiceParty">
-            <button @mouseover="mouseOver2" @mouseout="mouseOut2">
+            <button
+              @mouseover="mouseOver2"
+              @mouseout="mouseOut2"
+              @click="btnsound"
+            >
               <img
                 src="../assets/partyPlay.png"
                 alt=""
@@ -79,7 +87,8 @@ export default {
     return {
       image1: require("@/assets/singer-don.png"),
       image2: require("@/assets/dj-don.png"),
-
+      buttonaudio: new Audio(),
+      gameaudio: { button: "./決定.mp3" },
       hooperSettings: {
         autoPlay: true,
         playSpeed: "4000",
@@ -101,6 +110,10 @@ export default {
     },
     mouseOut2: function () {
       this.image2 = require("@/assets/dj-don.png")
+    },
+    btnsound: function () {
+      this.buttonaudio.src = this.gameaudio.button
+      this.buttonaudio.play()
     },
   },
   components: {
@@ -156,7 +169,7 @@ export default {
   align-items: flex-end;
 }
 
-/*.play-mode button {
+.play-mode button {
   font-size: 30px;
   margin-top: 20px;
   color: black;
@@ -166,7 +179,7 @@ export default {
   font-weight: 600;
   font-style: normal;
   background: transparent;
-}*/
+}
 #playButton {
   width: 40%;
 }
