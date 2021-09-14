@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">正解です！</h1>
+    <h1 class="title">正解です!!</h1>
     <img src="../assets/character3.png" class="character-left" />
     <img src="../assets/character3.png" class="character-right" />
     <div class="answer">
@@ -40,7 +40,8 @@ export default {
   font-family: "DotGothic16", sans-serif;
   text-shadow: 1px 2px 3px green;
   color: yellowgreen;
-  padding: 30px;
+  padding-top: 30px;
+  font-size: 50px;
 }
 .next-quiz:hover {
   opacity: 0.8;
@@ -57,14 +58,14 @@ export default {
 }
 .character-left {
   position: absolute;
-  top: 250px;
+  top: 230px;
   left: 55px;
-  width: 25%;
+  width: 20%;
 }
 .character-right {
   position: absolute;
   right: 55px;
-  top: 250px;
-  width: 25%;
+  top: 230px;
+  width: 20%;
 }
 </style>
