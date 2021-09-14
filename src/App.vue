@@ -21,7 +21,11 @@
     <router-view />
     <div class="Login">
       <router-link to="/Home" @click.native="login"
-        ><img src="@/assets/play-now.png" alt="" />
+        ><img src="@/assets/play-now.png" alt="" id="google" />
+      </router-link>
+
+      <router-link to="/Home" @click.native="Guest"
+        ><img src="@/assets/guestLogin.png" alt="" id="guest" />
       </router-link>
 
       <!--<router-link to="/" id="logoutButton" @click.native="logout"
@@ -101,10 +105,13 @@ export default {
   top: 10px;
   left: 10px;
 }
-.logo img {
+#google {
   width: 350px;
+  margin-left: 1%;
 }
-
+#guest {
+  width: 320px;
+}
 #nav {
   padding: 30px;
   text-align: right;
@@ -129,11 +136,10 @@ button {
 .Login {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .Login img {
-  width: 50%;
-  margin-top: 10%;
-  margin-bottom: 20%;
+  width: 400px;
 }
 
 *#logoutButton {
