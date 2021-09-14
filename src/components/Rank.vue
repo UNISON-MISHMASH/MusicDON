@@ -28,26 +28,6 @@ export default {
           human: "",
           time: 0,
         },
-        {
-          number: "🥈2位🥈",
-          human: "",
-          time: 0,
-        },
-        {
-          number: "🥉3位🥉",
-          human: "",
-          time: 0,
-        },
-        {
-          number: "4位",
-          human: "",
-          time: 0,
-        },
-        {
-          number: "5位",
-          human: "",
-          time: 0,
-        },
       ],
       IntroScore: [],
     }
@@ -65,7 +45,7 @@ export default {
             ...Top8,
           })
         })
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 1; i++) {
           this.intro[i].time = this.IntroScore[i].score
           this.intro[i].human = this.IntroScore[i].name
         }
@@ -89,8 +69,8 @@ export default {
 }
 
 .main img {
-  width: 30%;
-  margin-top: 30px;
+  width: 40%;
+  margin-top: 40px;
 }
 .ranking {
   display: flex;
@@ -98,14 +78,20 @@ export default {
 }
 
 td {
-  font-size: 20px;
+  font-size: 80px;
+
   color: rgb(21, 254, 188);
   text-align: center;
 }
 
 @media screen and (max-width: 1500px) {
   #app {
-    background-image: url("../assets/slide-rank-M.png");
+    background-image: url("../assets/slideRanking.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .main {
+    display: none;
   }
 }
 </style>

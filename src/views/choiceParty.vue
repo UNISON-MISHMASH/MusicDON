@@ -64,4 +64,22 @@ export default {
   color: white;
   font-size: 50px;
 }
+
+@media screen and (max-width: 1070px) {
+  .title img {
+    width: 90%;
+    margin-top: 20px;
+  }
+  .button {
+    float: none;
+
+    width: 50%;
+  }
+  .button img {
+    margin: 3% 20% 3% 20%;
+  }
+  .comment {
+    display: none;
+  }
+}
 </style>

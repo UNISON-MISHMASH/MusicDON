@@ -17,7 +17,7 @@
         <div class="play-button">
           <router-link to="/ChoiceSingle">
             <button @mouseover="mouseOver1" @mouseout="mouseOut1">
-              SINGLE PLAY
+              <img src="../assets/singlePlay.png" alt="" id="playButton" />
             </button>
           </router-link>
         </div>
@@ -34,9 +34,12 @@
         <div class="play-button">
           <router-link to="/ChoiceParty">
             <button @mouseover="mouseOver2" @mouseout="mouseOut2">
-              PARTY PLAY
-            </button></router-link
-          >
+              <img
+                src="../assets/partyPlay.png"
+                alt=""
+                id="playButton"
+              /></button
+          ></router-link>
         </div>
       </div>
     </div>
@@ -46,9 +49,18 @@
       <div>
         <hooper :settings="hooperSettings">
           <slide> <Rank /></slide>
-          <slide> <img src="../assets/slide-intro.png" /><br /> </slide>
-          <slide> <img src="../assets/slide-lyrics.png" /></slide>
-          <slide> <img src="../assets/slide-time.png" /></slide>
+          <slide>
+            <router-link to="/introQuiz"
+              ><img src="../assets/slide-intro.png" /></router-link
+          ></slide>
+          <slide>
+            <router-link to="/lyricsQuiz"
+              ><img src="../assets/slide-lyrics.png" /></router-link
+          ></slide>
+          <slide>
+            <router-link to="/introQuizTime"
+              ><img src="../assets/slide-time.png" /></router-link
+          ></slide>
         </hooper>
       </div>
     </div>
@@ -144,7 +156,7 @@ export default {
   align-items: flex-end;
 }
 
-.play-mode button {
+/*.play-mode button {
   font-size: 30px;
   margin-top: 20px;
   color: black;
@@ -154,8 +166,15 @@ export default {
   font-weight: 600;
   font-style: normal;
   background: transparent;
+}*/
+#playButton {
+  width: 40%;
 }
-
+button {
+  border: none; /* 枠線を消す */
+  outline: none; /* クリックしたときに表示される枠線を消す */
+  background: transparent;
+}
 .one img {
   margin-top: 50px;
   width: 250px;
@@ -186,6 +205,11 @@ export default {
 }
 .screen img {
   width: 70%;
+}
+@media screen and (max-width: 959px) {
+  .screen {
+    display: none;
+  }
 }
 @media screen and (max-width: 959px) {
   .header-foto img {
