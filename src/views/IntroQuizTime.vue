@@ -249,6 +249,56 @@ export default {
           url: "https://m.media-amazon.com/images/I/81ycP5Vn34L._SS500_.jpg",
           mv: "https://youtu.be/b4YLo74OWfY",
         },
+        {
+          answers: ["Lovers Again", "Ti Amo", "ただ逢いたくて", "道"],
+          answer: 0,
+          singer: "EXILE",
+          sound: "./Lovers Again.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/71b7oFyXz4L._AC_SL1091_.jpg",
+          mv: "https://youtu.be/PUdrCJSly_A",
+        },
+        {
+          answers: [
+            "サヨナラの意味",
+            "帰り道は遠回りをしたくなる",
+            "シンクロニシティ",
+            "逃げ水",
+          ],
+          answer: 2,
+          singer: "乃木坂46",
+          sound: "./シンクロニシティ.mp3",
+          url: "https://m.media-amazon.com/images/I/81OpmuY0R1L._SS500_.jpg",
+          mv: "https://youtu.be/f0wbnQw89J0",
+        },
+        {
+          answers: ["夜空", "Don't cry anymore", "片想い", "ヒカリへ"],
+          answer: 3,
+          singer: "miwa",
+          sound: "./ヒカリへ.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/61CfwEm1lgL._AC_SX425_.jpg",
+          mv: "https://youtu.be/aRyjZa89g4o",
+        },
+        {
+          answers: ["Sparkle", "君の名は", "前前前世", "点描の唄"],
+          answer: 0,
+          singer: "RADWIMPS",
+          sound: "./Sparkle.mp3",
+          url: "https://i1.sndcdn.com/artworks-000533563956-xnhu01-t500x500.jpg",
+          mv: "https://youtu.be/tpH8TEkKQI4",
+        },
+        {
+          answers: [
+            "世田谷ラブストーリー",
+            "クリスマスソング",
+            "高嶺の花子さん",
+            "ハッピーエンド",
+          ],
+          answer: 1,
+          singer: "back number",
+          sound: "./クリスマスソング.mp3",
+          url: "https://images-na.ssl-images-amazon.com/images/I/616ZobZ2Z7L._AC_SY355_.jpg",
+          mv: "https://youtu.be/7zBeQezaz4U",
+        },
       ],
       gameaudio: {
         end: "./kansei.mp3",
@@ -292,7 +342,7 @@ export default {
       return array
     }
     this.questions = shuffle(this.questions)
-    this.questions = this.questions.slice(10)
+    this.questions = this.questions.slice(15)
 
     for (let j = 0; j < this.questions.length; j++) {
       this.answer[j] = this.questions[j].answer
@@ -307,6 +357,7 @@ export default {
         if (this.questionNow) {
           this.audio.src = this.questions[this.questionIndex].sound
           this.audio.play()
+          this.audio.loop = true
         } else {
           this.audio.pause()
           this.audio.currentTime = 0
@@ -493,14 +544,14 @@ export default {
 }
 .flex {
   display: flex;
-  width: 100%;
+  width: 90%;
 }
 .flex button {
   font-family: "Viaoda Libre", cursive;
   background-color: greenyellow;
   color: black;
   font-size: 20px;
-  size: 50px;
+  size: 30px;
 }
 
 button:hover {
@@ -551,6 +602,14 @@ img {
   }
   100% {
     transform: translateY(calc(100vh + 1em)) rotateY(3600deg);
+  }
+}
+@media (max-width: 700px) {
+  .flex {
+    flex-direction: column;
+  }
+  .flex button + button {
+    margin-top: 30px;
   }
 }
 </style>
