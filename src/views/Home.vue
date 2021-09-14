@@ -220,6 +220,11 @@ button {
   width: 70%;
 }
 @media screen and (max-width: 959px) {
+  .screen {
+    display: none;
+  }
+}
+@media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
   }

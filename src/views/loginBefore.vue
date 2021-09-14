@@ -1,5 +1,7 @@
 <template>
-  <div class="login"></div>
+  <div class="login">
+    <img src="../assets/login-image.png" alt="" />
+  </div>
 </template>
 
 <style scoped>
@@ -7,28 +9,14 @@
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url("../assets/login-image.png");
-  background-position: center center;
-
-  background-size: cover;
   background-color: rgba(15, 20, 100, 0.8);
 }
-.header-foto {
-  display: flex;
-  justify-content: center;
-}
-.header-foto img {
-  margin: 100px;
-  width: 70%;
+.login img {
+  width: 100%;
 }
 @media screen and (max-width: 959px) {
-  .header-foto img {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .header-foto img {
-    width: 90%;
+  .login {
+    height: 100%;
   }
 }
 </style>

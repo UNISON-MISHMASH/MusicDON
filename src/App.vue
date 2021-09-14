@@ -21,7 +21,11 @@
     <router-view />
     <div class="Login">
       <router-link to="/Home" @click.native="login"
-        ><img src="@/assets/play-now.png" alt="" />
+        ><img src="@/assets/play-now.png" alt="" id="google" />
+      </router-link>
+
+      <router-link to="/Home" @click.native="Guest"
+        ><img src="@/assets/guestLogin.png" alt="" id="guest" />
       </router-link>
 
       <!--<router-link to="/" id="logoutButton" @click.native="logout"
@@ -98,14 +102,22 @@ export default {
 }
 .logo {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 30px;
+  left: 30px;
 }
 .logo img {
-  width: 350px;
+  float: left;
+  width: 40%;
 }
-
+#google {
+  width: 350px;
+  margin-left: 1%;
+}
+#guest {
+  width: 320px;
+}
 #nav {
+  margin: 20px 10px 20px 0;
   padding: 30px;
   text-align: right;
 }
@@ -129,11 +141,10 @@ button {
 .Login {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .Login img {
-  width: 50%;
-  margin-top: 10%;
-  margin-bottom: 20%;
+  width: 400px;
 }
 
 *#logoutButton {
@@ -146,16 +157,37 @@ button {
   border-radius: 100vh;
   border: 5px solid #000000;
 }
-
 @media screen and (max-width: 1340px) {
   .logo {
-    position: none;
     text-align: center;
+    display: none;
+  }
+  #nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  #nav {
+    text-align: center;
+    margin: 10px px 10px 0;
+    padding: 30px;
+  }
+
+  #nav img {
+    padding: 0;
+    width: 70%;
   }
 }
 @media screen and (max-width: 959px) {
   .header-foto img {
     width: 80%;
+  }
+  #nav {
+    display: flex;
+    flex-direction: column;
+  }
+  #nav img {
+    padding: 0;
+    width: 30%;
   }
 }
 @media screen and (max-width: 480px) {
