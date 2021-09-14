@@ -26,7 +26,11 @@ export default {
   methods: {
     checkanswer: function () {
       if (this.answer === this.newquestion.title) {
-        confetti(), this.$emit("my-click", 2)
+        confetti({
+          particleCount: 300,
+          spread: 70,
+        }),
+          this.$emit("my-click", 2)
       } else {
         this.$emit("my-click", 3)
       }

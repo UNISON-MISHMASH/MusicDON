@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <h1 class="title">正解です!!</h1>
-    <img src="../assets/character3.png" class="character-left" />
-    <img src="../assets/character3.png" class="character-right" />
-    <div class="answer">
-      <span class="answer-title">"{{ newquestion.singer }}"</span>の<br />
-      <span class="answer-title">"{{ newquestion.title }}"</span>でした！
+    <div class="answer-correct">
+      <h1 class="title">正解です!!</h1>
+      <img src="../assets/character3.png" class="character-left" />
+      <img src="../assets/character3.png" class="character-right" />
+      <div class="answer">
+        <span class="answer-title">"{{ newquestion.singer }}"</span>の<br />
+        <span class="answer-title">"{{ newquestion.title }}"</span>でした！
+      </div>
+      <img v-bind:src="newquestion.picture" class="picture" />
     </div>
-    <img v-bind:src="newquestion.picture" class="picture" />
     <button v-on:click="nextQuiz" class="next-quiz">次の問題</button>
   </div>
 </template>
@@ -30,6 +32,20 @@ export default {
   color: aqua;
   font-family: "Kaisei Opti", serif;
 }
+.answer-correct {
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .picture {
   display: block;
   margin: 0 auto;
@@ -38,7 +54,7 @@ export default {
 }
 .title {
   font-family: "DotGothic16", sans-serif;
-  text-shadow: 1px 2px 3px green;
+  text-shadow: 3px 2px 4px black;
   color: yellowgreen;
   padding-top: 30px;
   font-size: 50px;
